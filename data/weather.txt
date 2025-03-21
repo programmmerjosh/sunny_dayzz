@@ -1,0 +1,5 @@
+STEP 1. The predicted weather for Bristol on 2025-03-28 00:00:00 is expected to be partly cloudy with a 20% chance of rain in the morning, mostly sunny in the afternoon, and partly cloudy in the evening. The cloud cover is expected to be 40% in the morning, 10% in the afternoon, and 30% in the evening. The filename for this data would be 2025-03-28 00:00:00-7-days-before.
+
+STEP 2. The predicted weather for Bristol on 2025-03-24 00:00:00 is expected to be mostly cloudy with a 60% chance of rain in the morning, partly cloudy in the afternoon, and mostly cloudy in the evening. The cloud cover is expected to be 70% in the morning, 40% in the afternoon, and 60% in the evening. The filename for this data would be 2025-03-24 00:00:00-3-days-before.
+
+STEP 3. The weather for Bristol on 03/21/25 is expected to be mostly sunny in the morning, partly cloudy in the afternoon, and mostly cloudy in the evening. The
