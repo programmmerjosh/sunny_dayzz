@@ -1,4 +1,4 @@
-### Sunny Dayzz is an AI weather analyst.
+# Sunny Dayzz is an AI weather analyst.
 
 This small application is written in Python.
 I am using LangChain (Framework) to simplfy the coding and OpenAI API to execute the AI tasks.
@@ -11,7 +11,7 @@ I will be refining the search criteria (prompts) so that we can start getting a 
 
 ---
 
-## NOTE: in order for you to pull/download this project and run it yourself, you will need the following:
+### NOTE: in order for you to pull/download this project and run it yourself, you will need the following:
 - an OpenAI API account, to generate an *API key* and you will need credits (which you can purchase after creating your account).
 - Once you have an OpenAI API KEY, you can replace it with the *api_key* variable inside the *weather_patterns.py* file. 
 - You will also need Python installed on your system. 
