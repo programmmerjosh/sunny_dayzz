@@ -1,4 +1,4 @@
-Sunny Dayzz is an AI weather analyst.
+### Sunny Dayzz is an AI weather analyst.
 
 This small application is written in Python.
 I am using LangChain (Framework) to simplfy the coding and OpenAI API to execute the AI tasks.
