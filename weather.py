@@ -8,7 +8,10 @@ def main():
     from langchain.llms import OpenAI
     from config import my_template_with_data, my_template_without_data
 
-    load_dotenv()
+    # 🔧 Define base directory of the script
+    BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+    load_dotenv(os.path.join(BASE_DIR, ".env"))
     api_key = os.getenv("GPT_API_KEY")
 
     llm = OpenAI(openai_api_key=api_key, temperature=0.0, max_tokens=2048)
@@ -70,30 +73,52 @@ def main():
     try:
         prediction_data = json.loads(response)
         print("✅ Successfully parsed prediction data.")
+
+        # Load existing data
+        json_file_path = os.path.join(BASE_DIR, "data", "weather_data.json")
+        if os.path.exists(json_file_path):
+            with open(json_file_path, "r") as f:
+                existing_data = json.load(f)
+        else:
+            existing_data = []
+
+        # Duplicate check helper
+        def is_duplicate(new_entry, existing_entries):
+            for existing in existing_entries:
+                if (
+                    existing["location"].lower() == new_entry["location"].lower() and
+                    existing["prediction_date"] == new_entry["prediction_date"]
+                ):
+                    return True
+            return False
+
+        # Filter new predictions
+        new_predictions = [
+            entry for entry in prediction_data
+            if not is_duplicate(entry, existing_data)
+        ]
+
+        if new_predictions:
+            existing_data.extend(new_predictions)
+            with open(json_file_path, "w") as f:
+                json.dump(existing_data, f, indent=2)
+            print(f"✅ Saved {len(new_predictions)} new predictions to {json_file_path}")
+        else:
+            print("ℹ️ No new predictions to save. All entries were duplicates.")
+
+        # Logging
+        os.makedirs(os.path.join(BASE_DIR, "logs"), exist_ok=True)
+        log_file_path = os.path.join(BASE_DIR, "logs", "weather_log.txt")
+        with open(log_file_path, "a") as log:
+            log.write(
+                f"[{datetime.datetime.now()}] Location: {loc}, Generated: {len(prediction_data)}, Saved: {len(new_predictions)}\n"
+            )
+
     except json.JSONDecodeError as e:
         print("❌ Failed to parse LLM response as JSON.")
         print("Raw response:")
         print(response)
-        return
 
-    json_file_path = "data/weather_data.json"
-    if os.path.exists(json_file_path):
-        with open(json_file_path, "r") as f:
-            existing_data = json.load(f)
-    else:
-        existing_data = []
-
-    existing_data.extend(prediction_data)
-
-    with open(json_file_path, "w") as f:
-        json.dump(existing_data, f, indent=2)
-
-    print(f"✅ Saved {len(prediction_data)} predictions to {json_file_path}")
-
-    # ✅ Create the logs/ folder if missing
-    os.makedirs("logs", exist_ok=True) 
-    with open("logs/weather_log.txt", "a") as log:
-        log.write(f"[{datetime.datetime.now()}] Fetched {len(prediction_data)} predictions for {loc}\n")
 
 if __name__ == "__main__":
     main()
