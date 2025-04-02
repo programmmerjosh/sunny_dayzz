@@ -18,4 +18,4 @@ I will be refining the search criteria (prompts) so that we can start getting a 
 
 Then you're good to go.
 Once you have all of the above set up, simply open up your terminal, navigate to the project directory and enter the following command:
-`python weather_patterns.py`
+`python weather.py`
