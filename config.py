@@ -2,33 +2,67 @@
 my_template_with_data = """
 You are an AI weather data analyst.
 
-Consider the following as our collected data:
+We have historical weather data for context:
 {previous_weather}
 
-Use the format below to structure your output:
-" \
-"Predicted weather for [Location] on [DD/MM/yyyy] Date collected: [DD/MM/yyyy] Days before: [X]
-Summary Morning: ... Afternoon: ... Evening: ...
-Expected cloud cover Morning: ... Afternoon: ... Evening: ...
-Discrepancies [List any if applicable]" \
-"
-{str_find} {location} on {in_seven_days}.
-{str_find} {location} on {in_three_days}.
-{str_find} {location} on {todays_date}.
+Generate predicted weather for {location} on the following dates:
+- {in_seven_days} (7 days from now)
+- {in_three_days} (3 days from now)
+- {todays_date} (today)
 
-Discrepancies:
-Only if we have the weather data for {location} on:
-- Date collected: {todays_date} (format: dd/mm/yyyy), days before: 7 and/or 3
-- And Date collected: {todays_date}, days before: 0
+Respond in JSON format as an array with this structure:
 
-Compare and log any discrepancies.
+[
+  {{
+    "location": "{location}",
+    "prediction_date": "DD/MM/YYYY",
+    "collected_on": "{todays_date}",
+    "days_before": 0 or 3 or 7,
+    "summary": {{
+      "morning": "...",
+      "afternoon": "...",
+      "evening": "..."
+    }},
+    "cloud_cover": {{
+      "morning": "...",
+      "afternoon": "...",
+      "evening": "..."
+    }},
+    "discrepancies": "..." or "n/a"
+  }}
+]
 """
 
 # Template WITHOUT previous weather data
 my_template_without_data = """
 You are an AI weather data analyst.
 
-{str_find} {location} on {in_seven_days}.
-{str_find} {location} on {in_three_days}.
-{str_find} {location} on {todays_date}.
+Generate predicted weather for {location} on the following dates:
+- {in_seven_days} (7 days from now)
+- {in_three_days} (3 days from now)
+- {todays_date} (today)
+
+You do not have access to any previous weather data.
+
+Respond in JSON format as an array with this structure:
+
+[
+  {{
+    "location": "{location}",
+    "prediction_date": "DD/MM/YYYY",
+    "collected_on": "{todays_date}",
+    "days_before": 0 or 3 or 7,
+    "summary": {{
+      "morning": "...",
+      "afternoon": "...",
+      "evening": "..."
+    }},
+    "cloud_cover": {{
+      "morning": "...",
+      "afternoon": "...",
+      "evening": "..."
+    }},
+    "discrepancies": "n/a"
+  }}
+]
 """
