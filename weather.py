@@ -90,5 +90,10 @@ def main():
 
     print(f"✅ Saved {len(prediction_data)} predictions to {json_file_path}")
 
+    # ✅ Create the logs/ folder if missing
+    os.makedirs("logs", exist_ok=True) 
+    with open("logs/weather_log.txt", "a") as log:
+        log.write(f"[{datetime.datetime.now()}] Fetched {len(prediction_data)} predictions for {loc}\n")
+
 if __name__ == "__main__":
     main()
