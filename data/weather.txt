@@ -1,103 +1,42 @@
-*Predicted weather for Bristol on 05/04/2025*
-Date collected: 29/03/2025
+"Predicted weather for Bristol on 09/04/2025
+Date collected: 02/04/2025
 Days before: 7
----
-*Summary*
+Summary
+Morning: Mostly cloudy
+Afternoon: Partly cloudy
+Evening: Mostly cloudy
+Expected cloud cover
+Morning: 60%
+Afternoon: 20%
+Evening: 60%
+Discrepancies
+n/a"
+
+"Predicted weather for Bristol on 05/04/2025
+Date collected: 02/04/2025
+Days before: 3
+Summary
 Morning: Partly cloudy
 Afternoon: Mostly sunny
 Evening: Partly cloudy
----
-*Expected cloud cover*
+Expected cloud cover
 Morning: 30%
 Afternoon: 10%
 Evening: 20%
----
-*Discrepancies*
-n/a
+Discrepancies
+n/a"
 
-*Predicted weather for Bristol on 01/04/2025*
-Date collected: 29/03/2025
-Days before: 3
----
-*Summary*
-Morning: Mostly cloudy
-Afternoon: Full cloud cover
-Evening: Full cloud cover
----
-*Expected cloud cover*
-Morning: 60%
-Afternoon: 90%
-Evening: 90%
----
-*Discrepancies*
-n/a
-
-*Weather for Bristol on 29/03/2025*
-Date collected: 29/03/2025
+"Predicted weather for Bristol on 02/04/2025
+Date collected: 02/04/2025
 Days before: 0
----
-*Summary*
+Summary
 Morning: Zero cloud cover
 Afternoon: Partly cloudy
 Evening: Partly cloudy
----
-*Expected cloud cover*
+Expected cloud cover
 Morning: 0%
 Afternoon: 20%
 Evening: 10%
----
-*Discrepancies*
-n/a
-
+Discrepancies
+n/a"
 _next entry_
-
-    *Predicted weather for Bristol on 09/04/2025*
-    Date collected: 02/04/2025
-    Days before: 7
-    ---
-    *Summary*
-    Morning: Mostly cloudy
-    Afternoon: Partly cloudy
-    Evening: Mostly cloudy
-    ---
-    *Expected cloud cover*
-    Morning: 60%
-    Afternoon: 20%
-    Evening: 60%
-    ---
-    *Discrepancies*
-    n/a
-
-    *Predicted weather for Bristol on 05/04/2025*
-    Date collected: 02/04/2025
-    Days before: 3
-    ---
-    *Summary*
-    Morning: Partly cloudy
-    Afternoon: Mostly sunny
-    Evening: Partly cloudy
-    ---
-    *Expected cloud cover*
-    Morning: 30%
-    Afternoon: 10%
-    Evening: 20%
-    ---
-    *Discrepancies*
-    n/a
-
-    *Predicted weather for Bristol on 02/04/2025*
-    Date collected: 02/04/2025
-    Days before: 0
-    ---
-    *Summary*
-    Morning: Zero cloud cover
-    Afternoon: Partly cloudy
-    Evening: Partly cloudy
-    ---
-    *Expected cloud cover*
-    Morning: 0%
-    Afternoon: 20%
-    Evening: 10%
-    ---
-    *Discrepancies*
-    n/a
