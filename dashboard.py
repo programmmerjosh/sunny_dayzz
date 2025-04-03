@@ -19,7 +19,7 @@ def compare_cloud_cover(predicted, actual, tolerance=10):
     Returns number of matching time blocks (out of 3).
     """
     matches = 0
-    for time in ["Morning", "Afternoon", "Evening"]:
+    for time in ["morning", "afternoon", "evening"]:
         try:
             pred_val = int(predicted[time].strip('%'))
             actual_val = int(actual[time].strip('%'))
@@ -165,23 +165,6 @@ st.markdown("## 🔍 Prediction Discrepancy Checker")
 # Group entries by predicted date
 prediction_map = defaultdict(dict)
 
-seven_day_scores = []
-three_day_scores = []
-total_possible = 0
-
-for pred_date, predictions in prediction_map.items():
-    if all(day in predictions for day in [0, 3, 7]):
-        actual = predictions[0]["cloud_cover"]
-        total_possible += 3  # 3 time blocks
-
-        # 7-day forecast accuracy
-        score7 = compare_cloud_cover(predictions[7]["cloud_cover"], actual)
-        seven_day_scores.append(score7)
-
-        # 3-day forecast accuracy
-        score3 = compare_cloud_cover(predictions[3]["cloud_cover"], actual)
-        three_day_scores.append(score3)
-
 for entry in filtered:
     prediction_date = entry["prediction_date"]
     days_before = entry["days_before"]
@@ -201,6 +184,33 @@ for pred_date, predictions in prediction_map.items():
                     st.write(entry["cloud_cover"])
                     if entry.get("discrepancies") and entry["discrepancies"].lower() != "n/a":
                         st.warning(f'Discrepancy: {entry["discrepancies"]}')
+
+# Forecast Accuracy Calculation
+seven_day_scores = []
+three_day_scores = []
+total_possible = 0
+
+st.markdown("🎯 Prediction Groups for Accuracy Check")
+
+for pred_date, predictions in prediction_map.items():
+    if all(day in predictions for day in [0, 3, 7]):
+        actual = predictions[0]["cloud_cover"]
+        total_possible += 3
+
+        score7 = compare_cloud_cover(predictions[7]["cloud_cover"], actual)
+        score3 = compare_cloud_cover(predictions[3]["cloud_cover"], actual)
+
+        seven_day_scores.append(score7)
+        three_day_scores.append(score3)
+
+# Accuracy summary
+accuracy_7 = round((sum(seven_day_scores) / total_possible) * 100, 2) if total_possible > 0 else 0
+accuracy_3 = round((sum(three_day_scores) / total_possible) * 100, 2) if total_possible > 0 else 0
+
+st.markdown("## 📊 Forecast Accuracy (vs 0-Day Actuals)")
+st.metric("7-Day Forecast Accuracy", f"{accuracy_7}%")
+st.metric("3-Day Forecast Accuracy", f"{accuracy_3}%")
+
 
 # Sunny vs Cloudy Ratio
 zero_day_entries = [e for e in filtered if e["days_before"] == 0]
@@ -229,12 +239,6 @@ pie = alt.Chart(summary_df).mark_arc(innerRadius=50).encode(
 
 st.altair_chart(pie, use_container_width=True)
 
-total_7 = sum(seven_day_scores)
-total_3 = sum(three_day_scores)
 
-accuracy_7 = round((total_7 / total_possible) * 100, 2) if total_possible > 0 else 0
-accuracy_3 = round((total_3 / total_possible) * 100, 2) if total_possible > 0 else 0
 
-st.markdown("## 📊 Forecast Accuracy (vs 0-Day Actuals)")
-st.metric("7-Day Forecast Accuracy", f"{accuracy_7}%")
-st.metric("3-Day Forecast Accuracy", f"{accuracy_3}%")
+
