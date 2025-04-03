@@ -4,6 +4,19 @@ import os
 import pandas as pd
 import altair as alt
 
+# 🎨 Custom color scheme (editable anytime!)
+# COLOR_SCHEME = {
+#     "Morning": "#a6c8ff",    # Light sky blue
+#     "Afternoon": "#5a9bd5",  # Mid blue-grey
+#     "Evening": "#2e3b4e"     # Dark twilight blue
+# }
+
+COLOR_SCHEME = {
+    "Morning": "#d3d3d3",    # Light grey
+    "Afternoon": "#a9a9a9",  # Medium grey
+    "Evening": "#696969"     # Dark grey
+}
+
 # Load data
 DATA_PATH = os.path.join("data", "weather_data.json")
 
@@ -30,13 +43,12 @@ filtered = [entry for entry in data if entry["location"] == selected_location]
 # Sort by date
 filtered.sort(key=lambda x: x["prediction_date"])
 
-# 📊 Build combined cloud cover timeline chart
 timeline_data = []
 
 for entry in filtered:
-    date = entry["prediction_date"]
+    date = pd.to_datetime(entry["prediction_date"], format="%d/%m/%Y")  # 💥 Convert to datetime here
     cloud_cover = {
-        time: int(value.strip('%'))
+        time.title(): int(value.strip('%'))  # Make sure keys are title case
         for time, value in entry["cloud_cover"].items()
     }
     for time_of_day, percent in cloud_cover.items():
@@ -47,13 +59,23 @@ for entry in filtered:
         })
 
 df_timeline = pd.DataFrame(timeline_data)
+df_timeline["Date"] = pd.to_datetime(df_timeline["Date"], format="%d/%m/%Y")
+
+# display the number of date entries we have in our dataset
+st.write("📅 Unique Dates in Timeline:", df_timeline["Date"].nunique())
 
 st.markdown("## 📈 Cloud Cover Trend")
 timeline_chart = alt.Chart(df_timeline).mark_line(point=True).encode(
-    x="Date:T",
-    y="Cloud Cover (%):Q",
-    color="Time of Day:N",
-    tooltip=["Date", "Time of Day", "Cloud Cover (%)"]
+    x=alt.X("Date:T", title="Date"),
+    y=alt.Y("Cloud Cover (%):Q"),
+    color=alt.Color("Time of Day:N",
+                    sort=list(COLOR_SCHEME.keys()),
+                    scale=alt.Scale(
+                        domain=list(COLOR_SCHEME.keys()),
+                        range=list(COLOR_SCHEME.values())
+                    )),
+    tooltip=["Date", "Time of Day", "Cloud Cover (%)"],
+    detail="Time of Day:N"  # 👈 Ensures each time-of-day series gets its own line
 ).properties(
     width="container",
     height=300
@@ -61,6 +83,7 @@ timeline_chart = alt.Chart(df_timeline).mark_line(point=True).encode(
 
 st.altair_chart(timeline_chart, use_container_width=True)
 
+st.text("NOTE: The (# Days before) indicates the number of days before the given date that the weather prediction was made")
 
 # Display entries
 for entry in filtered:
@@ -71,14 +94,12 @@ for entry in filtered:
         st.markdown("**☀️ Summary**")
         st.write(entry["summary"])
 
-
-
     with cols[1]:
         st.markdown("**☁️ Cloud Cover**")
         
         # Convert cloud cover values (like "30%") to integers
         cloud_cover = {
-            time: int(value.strip('%'))
+            time.title(): int(value.replace('%', '').strip())
             for time, value in entry["cloud_cover"].items()
         }
 
@@ -88,18 +109,23 @@ for entry in filtered:
             "Cloud Cover (%)": list(cloud_cover.values())
         })
 
-        # Plot with Altair
+        time_order = ["Morning", "Afternoon", "Evening"]
+
         chart = alt.Chart(df).mark_bar().encode(
-            x="Time of Day",
-            y="Cloud Cover (%)",
-            color="Time of Day"
+            x=alt.X("Time of Day:N", sort=time_order),
+            y=alt.Y("Cloud Cover (%):Q"),
+            color=alt.Color("Time of Day:N",
+                            sort=time_order,
+                            scale=alt.Scale(
+                                domain=list(COLOR_SCHEME.keys()),
+                                range=list(COLOR_SCHEME.values())
+                            ))
         ).properties(
             width=250,
             height=200
         )
 
-        st.altair_chart(chart, use_container_width=True)
-
+        st.altair_chart(chart.interactive(), use_container_width=True)
 
     if entry.get("discrepancies") and entry["discrepancies"].lower() != "n/a":
         st.markdown("**⚠️ Discrepancies**")
