@@ -5,6 +5,30 @@ import pandas as pd
 import altair as alt
 from collections import defaultdict
 
+def is_sunny(cloud_cover_dict):
+    """Return True if all time blocks are ≤ 20% cloud cover."""
+    try:
+        values = [int(v.strip('%')) for v in cloud_cover_dict.values()]
+        return all(v <= 20 for v in values)
+    except Exception:
+        return False
+    
+def compare_cloud_cover(predicted, actual, tolerance=10):
+    """
+    Compare predicted vs actual cloud cover.
+    Returns number of matching time blocks (out of 3).
+    """
+    matches = 0
+    for time in ["Morning", "Afternoon", "Evening"]:
+        try:
+            pred_val = int(predicted[time].strip('%'))
+            actual_val = int(actual[time].strip('%'))
+            if abs(pred_val - actual_val) <= tolerance:
+                matches += 1
+        except Exception:
+            continue
+    return matches
+
 # 🎨 Custom color scheme (editable anytime!)
 # COLOR_SCHEME = {
 #     "Morning": "#a6c8ff",    # Light sky blue
@@ -17,14 +41,6 @@ COLOR_SCHEME = {
     "Afternoon": "#a9a9a9",  # Medium grey
     "Evening": "#696969"     # Dark grey
 }
-
-def is_sunny(cloud_cover_dict):
-    """Return True if all time blocks are ≤ 20% cloud cover."""
-    try:
-        values = [int(v.strip('%')) for v in cloud_cover_dict.values()]
-        return all(v <= 20 for v in values)
-    except Exception:
-        return False
 
 # Load data
 DATA_PATH = os.path.join("data", "weather_data.json")
@@ -149,6 +165,23 @@ st.markdown("## 🔍 Prediction Discrepancy Checker")
 # Group entries by predicted date
 prediction_map = defaultdict(dict)
 
+seven_day_scores = []
+three_day_scores = []
+total_possible = 0
+
+for pred_date, predictions in prediction_map.items():
+    if all(day in predictions for day in [0, 3, 7]):
+        actual = predictions[0]["cloud_cover"]
+        total_possible += 3  # 3 time blocks
+
+        # 7-day forecast accuracy
+        score7 = compare_cloud_cover(predictions[7]["cloud_cover"], actual)
+        seven_day_scores.append(score7)
+
+        # 3-day forecast accuracy
+        score3 = compare_cloud_cover(predictions[3]["cloud_cover"], actual)
+        three_day_scores.append(score3)
+
 for entry in filtered:
     prediction_date = entry["prediction_date"]
     days_before = entry["days_before"]
@@ -195,3 +228,13 @@ pie = alt.Chart(summary_df).mark_arc(innerRadius=50).encode(
 )
 
 st.altair_chart(pie, use_container_width=True)
+
+total_7 = sum(seven_day_scores)
+total_3 = sum(three_day_scores)
+
+accuracy_7 = round((total_7 / total_possible) * 100, 2) if total_possible > 0 else 0
+accuracy_3 = round((total_3 / total_possible) * 100, 2) if total_possible > 0 else 0
+
+st.markdown("## 📊 Forecast Accuracy (vs 0-Day Actuals)")
+st.metric("7-Day Forecast Accuracy", f"{accuracy_7}%")
+st.metric("3-Day Forecast Accuracy", f"{accuracy_3}%")
