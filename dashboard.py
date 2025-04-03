@@ -113,7 +113,7 @@ for entry in filtered:
 
         chart = alt.Chart(df).mark_bar().encode(
             x=alt.X("Time of Day:N", sort=time_order),
-            y=alt.Y("Cloud Cover (%):Q"),
+            y=alt.Y("Cloud Cover (%):Q", scale=alt.Scale(domain=[0, 100]), title="Cloud Cover (%)"),
             color=alt.Color("Time of Day:N",
                             sort=time_order,
                             scale=alt.Scale(
