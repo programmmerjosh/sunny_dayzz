@@ -25,7 +25,8 @@ st.title("🌞 Sunny Dayzz Dashboard")
 st.text("NOTE: the Cloud Cover Trend graph cannot be accurate until we manage to acquire more data over a substancial amount of time."
 "\nDate we started collecting data for this project: 02 April 2025")
 
-DATA_PATH = os.path.join("data", "weather_data.json")
+DATA_PATH = os.path.join("data", "weather_data.json") # real data
+# DATA_PATH = os.path.join("data", "dummy_data.json") # dummy data
 data = load_data(DATA_PATH)
 
 if not data:
