@@ -19,3 +19,13 @@ I will be refining the search criteria (prompts) so that we can start getting a 
 Then you're good to go.
 Once you have all of the above set up, simply open up your terminal, navigate to the project directory and enter the following command:
 `python weather.py`
+
+### NOTE: To view the data on a visual dashboard (locally), you will need to install Streamlit.
+
+*How to install Streamlit:*
+Enter this line in your terminal: 
+`pip install streamlit`
+
+*How to run the dashboard:*
+Enter this line in your terminal: 
+`streamlit run dashboard.py`

@@ -49,5 +49,56 @@
       "evening": "0%"
     },
     "discrepancies": "n/a"
+  },
+  {
+    "location": "Bristol",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Partly cloudy with a chance of showers",
+      "afternoon": "Cloudy with scattered showers",
+      "evening": "Cloudy with a chance of rain"
+    },
+    "cloud_cover": {
+      "morning": "50%",
+      "afternoon": "70%",
+      "evening": "60%"
+    },
+    "discrepancies": "n/a"
+  },
+  {
+    "location": "Bristol",
+    "prediction_date": "06/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Sunny",
+      "evening": "Clear"
+    },
+    "cloud_cover": {
+      "morning": "30%",
+      "afternoon": "10%",
+      "evening": "0%"
+    },
+    "discrepancies": "n/a"
+  },
+  {
+    "location": "Bristol",
+    "prediction_date": "03/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Clear",
+      "evening": "Clear"
+    },
+    "cloud_cover": {
+      "morning": "10%",
+      "afternoon": "0%",
+      "evening": "0%"
+    },
+    "discrepancies": "n/a"
   }
 ]
