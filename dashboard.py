@@ -17,6 +17,14 @@ COLOR_SCHEME = {
     "Evening": "#696969"     # Dark grey
 }
 
+def is_sunny(cloud_cover_dict):
+    """Return True if all time blocks are ≤ 20% cloud cover."""
+    try:
+        values = [int(v.strip('%')) for v in cloud_cover_dict.values()]
+        return all(v <= 20 for v in values)
+    except Exception:
+        return False
+
 # Load data
 DATA_PATH = os.path.join("data", "weather_data.json")
 
@@ -87,11 +95,12 @@ st.text("NOTE: The (# Days before) indicates the number of days before the given
 
 # Display entries
 for entry in filtered:
-    st.subheader(f'📅 {entry["prediction_date"]} ({entry["days_before"]} days before)')
+    sunny_icon = " ☀️" if is_sunny(entry["cloud_cover"]) else ""
+    st.subheader(f'📅 {entry["prediction_date"]} ({entry["days_before"]} days before){sunny_icon}')
     cols = st.columns(2)
 
     with cols[0]:
-        st.markdown("**☀️ Summary**")
+        st.markdown("**Data Summary**")
         st.write(entry["summary"])
 
     with cols[1]:
