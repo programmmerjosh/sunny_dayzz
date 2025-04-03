@@ -3,6 +3,7 @@ import json
 import os
 import pandas as pd
 import altair as alt
+from collections import defaultdict
 
 # 🎨 Custom color scheme (editable anytime!)
 # COLOR_SCHEME = {
@@ -141,3 +142,56 @@ for entry in filtered:
         st.warning(entry["discrepancies"])
 
     st.markdown("---")
+
+# Prediction Discrepancy Checker
+st.markdown("## 🔍 Prediction Discrepancy Checker")
+
+# Group entries by predicted date
+prediction_map = defaultdict(dict)
+
+for entry in filtered:
+    prediction_date = entry["prediction_date"]
+    days_before = entry["days_before"]
+    prediction_map[prediction_date][days_before] = entry
+
+for pred_date, predictions in prediction_map.items():
+    if all(day in predictions for day in [0, 3, 7]):
+        with st.expander(f"📅 {pred_date} - Compare Predictions (7 vs 3 vs 0 Days Before)"):
+            cols = st.columns(3)
+            for i, day in enumerate([7, 3, 0]):
+                with cols[i]:
+                    entry = predictions[day]
+                    st.markdown(f"**{day} Days Before**")
+                    st.markdown("☀️ **Summary**")
+                    st.write(entry["summary"])
+                    st.markdown("☁️ **Cloud Cover**")
+                    st.write(entry["cloud_cover"])
+                    if entry.get("discrepancies") and entry["discrepancies"].lower() != "n/a":
+                        st.warning(f'Discrepancy: {entry["discrepancies"]}')
+
+# Sunny vs Cloudy Ratio
+zero_day_entries = [e for e in filtered if e["days_before"] == 0]
+sunny_days = [e for e in zero_day_entries if is_sunny(e["cloud_cover"])]
+cloudy_days = [e for e in zero_day_entries if not is_sunny(e["cloud_cover"])]
+
+st.markdown("## ☀️ Sunny vs Cloudy Days (Based on 0-Day Predictions)")
+
+st.metric("Total Days", len(zero_day_entries))
+st.metric("☀️ Sunny Days", len(sunny_days))
+st.metric("🌥️ Cloudy Days", len(cloudy_days))
+
+# Pie chart
+summary_df = pd.DataFrame({
+    "Type": ["Sunny", "Cloudy"],
+    "Count": [len(sunny_days), len(cloudy_days)]
+})
+
+pie = alt.Chart(summary_df).mark_arc(innerRadius=50).encode(
+    theta="Count:Q",
+    color="Type:N"
+).properties(
+    width=300,
+    height=300
+)
+
+st.altair_chart(pie, use_container_width=True)
