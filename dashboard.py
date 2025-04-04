@@ -35,7 +35,7 @@ if not data:
 
 locations = sorted(set(entry["location"] for entry in data))
 selected_location = st.sidebar.selectbox("Select a location", locations)
-filtered = [e for e in data if e["location"].lower() == selected_location.lower()]
+filtered = get_filtered_data(data, selected_location)
 
 # 📈 Timeline Chart
 timeline_data = []

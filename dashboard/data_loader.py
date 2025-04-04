@@ -8,5 +8,6 @@ def load_data(data_path):
     with open(data_path, "r") as f:
         return json.load(f)
 
-def get_filtered_data(data, location):
-    return [entry for entry in data if entry["location"].lower() == location.lower()]
+def get_filtered_data(data, selected_location):
+    return [e for e in data if e["location"].lower() == selected_location.lower()]
+            
