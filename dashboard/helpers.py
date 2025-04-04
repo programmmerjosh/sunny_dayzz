@@ -24,25 +24,34 @@ def compare_cloud_cover(predicted, actual, tolerance=10):
             continue
     return matches
 
+def is_duplicate(new_entry, existing_entries):
+    for existing in existing_entries:
+        if (
+            existing["location"].lower() == new_entry["location"].lower() and
+            existing["prediction_date"] == new_entry["prediction_date"]
+        ):
+            return True
+    return False
+
 def relevant_weather_data_for(location, w_previous_weather):
     # Filter previous_weather for only this location
     # Can return "" if not relevant (or not implemented yet)
     return w_previous_weather if location.lower() in w_previous_weather.lower() else ""
 
 def get_relevant_weather_entries(file_path, target_dates, location):
-        relevant_entries = []
-        location = location.lower()
-        if not os.path.exists(file_path):
-            return ""
+    relevant_entries = []
+    location = location.lower()
+    if not os.path.exists(file_path):
+        return ""
 
-        with open(file_path, "r") as f:
-            content = f.read()
-            entries = content.split("_next entry_")
-            for entry in entries:
-                entry_clean = entry.strip().lower()
-                if location in entry_clean:
-                    for date in target_dates:
-                        if date in entry:
-                            relevant_entries.append(entry.strip())
-                            break
-        return "\n\n".join(relevant_entries)
+    with open(file_path, "r") as f:
+        content = f.read()
+        entries = content.split("_next entry_")
+        for entry in entries:
+            entry_clean = entry.strip().lower()
+            if location in entry_clean:
+                for date in target_dates:
+                    if date in entry:
+                        relevant_entries.append(entry.strip())
+                        break
+    return "\n\n".join(relevant_entries)

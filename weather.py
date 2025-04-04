@@ -7,7 +7,7 @@ def main():
     from langchain.prompts import PromptTemplate
     from langchain.llms import OpenAI
     from config import my_template_with_data, my_template_without_data
-    from dashboard.helpers import relevant_weather_data_for, get_relevant_weather_entries
+    from dashboard.helpers import relevant_weather_data_for, get_relevant_weather_entries, is_duplicate
 
     # 🔧 Define base directory of the script
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -23,18 +23,9 @@ def main():
     d_in_seven_days = (today + datetime.timedelta(days=7)).strftime("%d/%m/%Y")
     target_dates = {d_todays_date, d_in_three_days, d_in_seven_days}
 
-    # 👇 Hard-coded locations to collect weather data for
-    LOCATIONS = [
-        "Bristol",
-        "London",
-        "Barcelona",
-        "Logroño",
-        "Madrid",
-        "Port Elizabeth",
-        "Amalfi",
-        "Cannes"
-        # Add more (or less) as needed
-    ]
+    with open("data/locations.json") as f:
+        LOCATIONS = json.load(f)
+
     str_find = "Find the predicted weather for"
 
     for loc in LOCATIONS:
@@ -73,22 +64,12 @@ def main():
             # Load existing data
             json_file_path = os.path.join(BASE_DIR, "data", "weather_data.json") # real data
             # json_file_path = os.path.join(BASE_DIR, "data", "dummy_data.json") # dummy data
-            
+
             if os.path.exists(json_file_path):
                 with open(json_file_path, "r") as f:
                     existing_data = json.load(f)
             else:
                 existing_data = []
-
-            # Duplicate check helper
-            def is_duplicate(new_entry, existing_entries):
-                for existing in existing_entries:
-                    if (
-                        existing["location"].lower() == new_entry["location"].lower() and
-                        existing["prediction_date"] == new_entry["prediction_date"]
-                    ):
-                        return True
-                return False
 
             # Filter new predictions
             new_predictions = [
@@ -116,8 +97,9 @@ def main():
             print(f"❌ Failed to parse JSON for {loc}. Skipping.")
             print("Raw response:")
             print(response)
+            with open("logs/bad_responses.txt", "a") as bad_log:
+                bad_log.write(f"\n[{datetime.datetime.now()}] Location: {loc}\n{response}\n")
             continue
-
 
 if __name__ == "__main__":
     main()
