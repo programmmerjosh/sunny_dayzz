@@ -83,6 +83,7 @@ python weather.py
 
 # Launch the interactive dashboard
 streamlit run dashboard.py
+```
 
 ## 🧪 Testing & Development Notes
 
