@@ -17,6 +17,7 @@ This project aims to track, compare, and analyze the accuracy of weather forecas
 - ☀️ **Sunny Day Detection**: Automatically flags days with clear weather
 - 📊 **Forecast Accuracy Scoring**: Calculates how accurate 7-day and 3-day forecasts are versus 0-day observations
 - 🥧 **Sunny vs Cloudy Ratio**: Visual breakdown of actual sunny days
+- 🗺️ **Multi-location Support**: Collect and analyze forecasts for multiple geographic locations, each with its own dashboard view
 - 📅 **Automation Ready**: Daily forecast logging is scheduled locally using cron
 - ☁️ **Deployment-Ready**: Next step: hosting via Streamlit Cloud or other providers
 
@@ -91,6 +92,7 @@ streamlit run dashboard.py
 - A few sample data entries are included to help you get started.
 - The `weather.py` script can be run manually or automated using cron for daily forecast collection.
 - The dashboard dynamically analyzes cloud cover, forecast accuracy, and sunny days in real-time based on stored JSON data.
+- Feel free to update the list of locations in `data/locations.json` according to your preference.
 
 ---
 
