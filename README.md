@@ -98,7 +98,7 @@ streamlit run dashboard.py
 
 - Your OpenAI API key is stored in a `.env` file and loaded via `python-dotenv`.
 - Make sure to **exclude** this file from version control by adding `.env` to your `.gitignore`.
-OR
+- OR
 - If you're only interested in running the application locally, you could simply filter and replace `os.getenv("GPT_API_KEY")` with your own OpenAI API key
 
 ---
