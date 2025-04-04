@@ -355,5 +355,572 @@
       "evening": "60%"
     },
     "discrepancies": "Actual cloud cover was higher than predicted"
-  }      
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "09/04/2025",
+    "collected_on": "02/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Cloudy",
+      "afternoon": "Stormy",
+      "evening": "Rainy"
+    },
+    "cloud_cover": {
+      "morning": "80%",
+      "afternoon": "100%",
+      "evening": "95%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "09/04/2025",
+    "collected_on": "06/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Rainy",
+      "evening": "Overcast"
+    },
+    "cloud_cover": {
+      "morning": "60%",
+      "afternoon": "90%",
+      "evening": "85%"
+    },
+    "discrepancies": "Morning improved more than expected"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "09/04/2025",
+    "collected_on": "09/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Rain",
+      "evening": "Mostly cloudy"
+    },
+    "cloud_cover": {
+      "morning": "55%",
+      "afternoon": "92%",
+      "evening": "70%"
+    },
+    "discrepancies": "Evening clearer than forecasted"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Overcast",
+      "afternoon": "Partly cloudy",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "90%",
+      "afternoon": "50%",
+      "evening": "10%"
+    },
+    "discrepancies": "Initial overcast outlook revised"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "40%",
+      "afternoon": "20%",
+      "evening": "10%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Mostly sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "30%",
+      "afternoon": "15%",
+      "evening": "5%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "11/04/2025",
+    "collected_on": "04/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Clear skies",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "5%",
+      "afternoon": "10%",
+      "evening": "5%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "11/04/2025",
+    "collected_on": "08/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Sunny",
+      "evening": "Mostly clear"
+    },
+    "cloud_cover": {
+      "morning": "8%",
+      "afternoon": "10%",
+      "evening": "15%"
+    },
+    "discrepancies": "Slight increase in evening cloud cover"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "11/04/2025",
+    "collected_on": "11/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "10%",
+      "afternoon": "12%",
+      "evening": "8%"
+    },
+    "discrepancies": "Evening more clear than expected"
+  },
+  {
+    "location": "Logroño",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Foggy",
+      "afternoon": "Partly cloudy",
+      "evening": "Mostly clear"
+    },
+    "cloud_cover": {
+      "morning": "65%",
+      "afternoon": "45%",
+      "evening": "25%"
+    },
+    "discrepancies": "Initial fog not observed later"
+  },
+  {
+    "location": "Logroño",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Mostly sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "40%",
+      "afternoon": "30%",
+      "evening": "15%"
+    },
+    "discrepancies": "Updated after satellite clears fog risk"
+  },
+  {
+    "location": "Logroño",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Mostly sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "20%",
+      "afternoon": "22%",
+      "evening": "10%"
+    },
+    "discrepancies": "Actual conditions sunnier than expected"
+  },
+
+  {
+    "location": "Madrid",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Cloudy",
+      "afternoon": "Stormy",
+      "evening": "Rainy"
+    },
+    "cloud_cover": {
+      "morning": "80%",
+      "afternoon": "100%",
+      "evening": "100%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Madrid",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Cloudy",
+      "afternoon": "Cloudy",
+      "evening": "Mostly cloudy"
+    },
+    "cloud_cover": {
+      "morning": "70%",
+      "afternoon": "80%",
+      "evening": "85%"
+    },
+    "discrepancies": "Storm risk downgraded"
+  },
+  {
+    "location": "Madrid",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Cloudy",
+      "evening": "Overcast"
+    },
+    "cloud_cover": {
+      "morning": "50%",
+      "afternoon": "75%",
+      "evening": "90%"
+    },
+    "discrepancies": "Actual storm did not materialize"
+  },
+
+  {
+    "location": "Port Elizabeth",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Mostly sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "25%",
+      "afternoon": "10%",
+      "evening": "5%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Port Elizabeth",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "15%",
+      "afternoon": "8%",
+      "evening": "5%"
+    },
+    "discrepancies": "Improved forecast model"
+  },
+  {
+    "location": "Port Elizabeth",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "10%",
+      "afternoon": "10%",
+      "evening": "5%"
+    },
+    "discrepancies": "N/A"
+  },
+
+  {
+    "location": "Amalfi",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Overcast",
+      "afternoon": "Partly cloudy",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "90%",
+      "afternoon": "50%",
+      "evening": "10%"
+    },
+    "discrepancies": "Initial overcast outlook revised"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "40%",
+      "afternoon": "20%",
+      "evening": "10%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Amalfi",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Mostly sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "30%",
+      "afternoon": "15%",
+      "evening": "5%"
+    },
+    "discrepancies": "N/A"
+  },
+
+  {
+    "location": "Cannes",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Cloudy",
+      "evening": "Mostly cloudy"
+    },
+    "cloud_cover": {
+      "morning": "40%",
+      "afternoon": "60%",
+      "evening": "70%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Cannes",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Mostly sunny",
+      "afternoon": "Partly cloudy",
+      "evening": "Partly cloudy"
+    },
+    "cloud_cover": {
+      "morning": "20%",
+      "afternoon": "30%",
+      "evening": "40%"
+    },
+    "discrepancies": "Updated forecast with clearer evening outlook"
+  },
+  {
+    "location": "Cannes",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Mostly sunny",
+      "afternoon": "Partly cloudy",
+      "evening": "Mostly cloudy"
+    },
+    "cloud_cover": {
+      "morning": "22%",
+      "afternoon": "35%",
+      "evening": "60%"
+    },
+    "discrepancies": "Evening clouds returned more than expected"
+  },
+  {
+    "location": "Bristol",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Cloudy",
+      "afternoon": "Cloudy",
+      "evening": "Rainy"
+    },
+    "cloud_cover": {
+      "morning": "80%",
+      "afternoon": "75%",
+      "evening": "90%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Bristol",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Mostly cloudy",
+      "afternoon": "Cloudy",
+      "evening": "Partly cloudy"
+    },
+    "cloud_cover": {
+      "morning": "70%",
+      "afternoon": "80%",
+      "evening": "60%"
+    },
+    "discrepancies": "Updated from earlier rain prediction"
+  },
+  {
+    "location": "Bristol",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Mostly cloudy",
+      "afternoon": "Cloudy",
+      "evening": "Partly cloudy"
+    },
+    "cloud_cover": {
+      "morning": "72%",
+      "afternoon": "78%",
+      "evening": "62%"
+    },
+    "discrepancies": "Actual rain did not materialize"
+  },
+
+  {
+    "location": "London",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Clear skies",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "5%",
+      "afternoon": "10%",
+      "evening": "5%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "London",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Sunny",
+      "evening": "Mostly clear"
+    },
+    "cloud_cover": {
+      "morning": "7%",
+      "afternoon": "12%",
+      "evening": "10%"
+    },
+    "discrepancies": "Minor increase in afternoon clouds"
+  },
+  {
+    "location": "London",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Partly cloudy",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "10%",
+      "afternoon": "20%",
+      "evening": "5%"
+    },
+    "discrepancies": "Afternoon less clear than predicted"
+  },
+
+  {
+    "location": "Barcelona",
+    "prediction_date": "10/04/2025",
+    "collected_on": "03/04/2025",
+    "days_before": 7,
+    "summary": {
+      "morning": "Partly cloudy",
+      "afternoon": "Mostly sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "30%",
+      "afternoon": "20%",
+      "evening": "10%"
+    },
+    "discrepancies": "N/A"
+  },
+  {
+    "location": "Barcelona",
+    "prediction_date": "10/04/2025",
+    "collected_on": "07/04/2025",
+    "days_before": 3,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "15%",
+      "afternoon": "10%",
+      "evening": "5%"
+    },
+    "discrepancies": "Refined model updated prediction"
+  },
+  {
+    "location": "Barcelona",
+    "prediction_date": "10/04/2025",
+    "collected_on": "10/04/2025",
+    "days_before": 0,
+    "summary": {
+      "morning": "Sunny",
+      "afternoon": "Sunny",
+      "evening": "Clear skies"
+    },
+    "cloud_cover": {
+      "morning": "12%",
+      "afternoon": "8%",
+      "evening": "5%"
+    },
+    "discrepancies": "N/A"
+  }
 ]
