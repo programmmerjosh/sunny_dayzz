@@ -28,7 +28,8 @@ def is_duplicate(new_entry, existing_entries):
     for existing in existing_entries:
         if (
             existing["location"].lower() == new_entry["location"].lower() and
-            existing["prediction_date"] == new_entry["prediction_date"]
+            existing["prediction_date"] == new_entry["prediction_date"] and
+            int(existing["days_before"]) == int(new_entry["days_before"])
         ):
             return True
     return False
