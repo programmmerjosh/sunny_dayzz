@@ -26,3 +26,37 @@
 [2025-04-04 12:03:59.305738] Location: Port Elizabeth, Generated: 3, Saved: 0
 [2025-04-04 12:04:03.784126] Location: Amalfi, Generated: 3, Saved: 0
 [2025-04-04 12:04:08.010991] Location: Cannes, Generated: 3, Saved: 0
+[2025-04-04 13:11:37.445746] Location: Bristol, Generated: 3, Saved: 0
+[2025-04-04 13:11:41.605343] Location: London, Generated: 3, Saved: 0
+[2025-04-04 13:11:45.976986] Location: Barcelona, Generated: 3, Saved: 0
+[2025-04-04 13:11:50.221681] Location: Logroño, Generated: 3, Saved: 0
+[2025-04-04 13:11:54.771178] Location: Madrid, Generated: 3, Saved: 0
+[2025-04-04 13:11:59.289042] Location: Port Elizabeth, Generated: 3, Saved: 0
+[2025-04-04 13:12:03.580734] Location: Amalfi, Generated: 3, Saved: 0
+[2025-04-04 13:12:08.017961] Location: Cannes, Generated: 3, Saved: 0
+[2025-04-05 21:11:55.832611] Location: Bristol, Generated: 3, Saved: 2
+[2025-04-05 21:11:59.756322] Location: London, Generated: 3, Saved: 3
+[2025-04-05 21:12:04.442858] Location: Barcelona, Generated: 3, Saved: 3
+[2025-04-05 21:12:08.785923] Location: Logroño, Generated: 3, Saved: 3
+[2025-04-05 21:12:12.959088] Location: Madrid, Generated: 3, Saved: 3
+[2025-04-05 21:12:17.693193] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-04-05 21:12:22.032164] Location: Amalfi, Generated: 3, Saved: 3
+[2025-04-05 21:12:26.709844] Location: Cannes, Generated: 3, Saved: 3
+[2025-04-05 21:19:35.379041] Location: Bristol, Generated: 3, Saved: 0
+[2025-04-06 05:59:49.817674] Location: Bristol, Generated: 3, Saved: 1
+[2025-04-06 05:59:53.737988] Location: London, Generated: 3, Saved: 3
+[2025-04-06 05:59:58.001393] Location: Barcelona, Generated: 3, Saved: 3
+[2025-04-06 06:00:01.823498] Location: Logroño, Generated: 3, Saved: 3
+[2025-04-06 06:00:05.611195] Location: Madrid, Generated: 3, Saved: 3
+[2025-04-06 06:00:08.992272] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-04-06 06:00:13.193308] Location: Amalfi, Generated: 3, Saved: 3
+[2025-04-06 06:00:16.976629] Location: Cannes, Generated: 3, Saved: 3
+[2025-04-06 09:58:09.066294] Location: Bristol, Generated: 3, Saved: 2
+[2025-04-06 09:58:12.753395] Location: London, Generated: 3, Saved: 0
+[2025-04-06 09:58:16.539065] Location: Barcelona, Generated: 3, Saved: 0
+[2025-04-06 09:58:21.149458] Location: Logroño, Generated: 3, Saved: 0
+[2025-04-06 09:58:25.445618] Location: Madrid, Generated: 3, Saved: 0
+[2025-04-06 09:58:29.243903] Location: Port Elizabeth, Generated: 3, Saved: 0
+[2025-04-06 09:58:33.539899] Location: Amalfi, Generated: 3, Saved: 0
+[2025-04-06 09:58:37.108833] Location: Cannes, Generated: 3, Saved: 0
+[2025-04-06 10:08] Location: Bristol, Manual Entry: 1 for date: 2025-04-05 Entry didn't log because of a bug (fixed now)
