@@ -62,7 +62,7 @@ def main():
             print("✅ Successfully parsed prediction data.")
 
             # Load existing data
-            json_file_path = os.path.join(BASE_DIR, "data", "weather_data.json") # real data
+            json_file_path = os.path.join(BASE_DIR, "data", "Mamaia_Weather_Summer_2024_REFINED.json") # real data
             # json_file_path = os.path.join(BASE_DIR, "data", "dummy_data.json") # dummy data
 
             if os.path.exists(json_file_path):
