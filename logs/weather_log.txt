@@ -60,7 +60,7 @@
 [2025-04-06 09:58:33.539899] Location: Amalfi, Generated: 3, Saved: 0
 [2025-04-06 09:58:37.108833] Location: Cannes, Generated: 3, Saved: 0
 [2025-04-06 10:08] Location: Bristol, Manual Entry: 1 for date: 2025-04-05 Entry didn't log because of a bug (fixed now)
-[2025-04-07 16:47:04.873844] Location: Bristol, Generated: 3, Saved: 3, 1 (0 day) Replaced with manual entry due to incorrect data
+[2025-04-07 16:47:04.873844] Location: Bristol, Generated: 3, Saved: 3, 1 (0 day) Replaced with manual entry due to inaccurate data
 [2025-04-07 16:47:09.487727] Location: London, Generated: 3, Saved: 3
 [2025-04-07 16:47:14.918127] Location: Barcelona, Generated: 3, Saved: 3
 [2025-04-07 16:47:20.039288] Location: Logroño, Generated: 3, Saved: 3
@@ -68,3 +68,21 @@
 [2025-04-07 16:47:29.143150] Location: Port Elizabeth, Generated: 3, Saved: 3
 [2025-04-07 16:47:34.169905] Location: Amalfi, Generated: 3, Saved: 3
 [2025-04-07 16:47:39.655881] Location: Cannes, Generated: 3, Saved: 3
+[2025-04-10 20:57:16.246444] Location: Bristol, Generated: 3, Saved: 3 => more inaccurate data!
+[2025-04-10 20:57:21.286925] Location: London, Generated: 3, Saved: 3
+[2025-04-10 20:57:26.593761] Location: Barcelona, Generated: 3, Saved: 3
+[2025-04-10 20:57:31.444181] Location: Logroño, Generated: 3, Saved: 3
+[2025-04-10 20:57:37.579070] Location: Madrid, Generated: 3, Saved: 3
+[2025-04-10 20:57:42.989750] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-04-10 20:57:48.355741] Location: Amalfi, Generated: 3, Saved: 3
+[2025-04-10 20:57:53.358196] Location: Cannes, Generated: 3, Saved: 3
+[2025-04-11 07:44:11.069564] Location: Bristol, Generated: 3, Saved: 3
+[2025-04-11 07:44:15.464102] Location: London, Generated: 3, Saved: 3
+[2025-04-11 07:44:20.479216] Location: Barcelona, Generated: 3, Saved: 3
+[2025-04-11 07:44:23.962658] Location: Logroño, Generated: 3, Saved: 3
+[2025-04-11 07:44:28.874876] Location: Madrid, Generated: 3, Saved: 3
+[2025-04-11 07:44:33.276968] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-04-11 07:44:37.989303] Location: Amalfi, Generated: 3, Saved: 3
+[2025-04-11 07:44:41.985570] Location: Cannes, Generated: 3, Saved: 3
+[2025-04-11] Problem:  Right now, if you just ask for weather data, OpenAI might respond based on its own knowledge or general patterns, which isn’t good for real-time or location-specific accuracy.
+[2025-04-11] Proposed Solution: Integrate OpenWeatherMap API to get REAL (and reliable) weather data, then use GPT to analyse the fetched data accordingly.
