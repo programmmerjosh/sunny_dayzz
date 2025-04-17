@@ -190,26 +190,7 @@ block_pie = alt.Chart(df_block).mark_arc(innerRadius=50).encode(
 
 st.altair_chart(block_pie, use_container_width=True)
 
-
-
 # previous
-
-
-# st.markdown("## 📈 Cloud Cover Trend")
-# st.altair_chart(build_timeline_chart(df_timeline, COLOR_SCHEME), use_container_width=True)
-
-# # ☀️ Sunny vs Cloudy Pie
-# zero_day = [e for e in filtered if e["days_before"] == 0]
-# sunny_days = [e for e in zero_day if is_sunny(e["cloud_cover"])]
-# cloudy_days = [e for e in zero_day if not is_sunny(e["cloud_cover"])]
-
-# st.markdown("## ☀️ Sunny vs Cloudy Days (Based on 0-Day Predictions)")
-
-# st.metric("Total Days", len(zero_day))
-# st.metric("☀️ Sunny Days", len(sunny_days))
-# st.metric("🌥️ Cloudy Days", len(cloudy_days))
-
-# st.altair_chart(build_pie_chart(sunny_days, cloudy_days), use_container_width=True)
 
 # # 🔍 Discrepancy Checker
 # prediction_map = render_discrepancy_checker(filtered)

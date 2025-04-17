@@ -1,5 +1,3 @@
-import os
-
 import pandas as pd
 # ============ dashboard.py helper functions ==============
 def flatten_cloud_cover(entry):

@@ -87,11 +87,11 @@ pip install python-dotenv
 echo "GPT_API_KEY=your_openai_api_key_here" > .env
 echo "FREE_TIER_OPENWEATHERMAP_API_KEY=your_openweathermap_api_key_here" > .env
 
-# Run the app locally to generate predictions
+# Run the app locally to fetch weather predictions
 python weather.py
 
-# Launch the interactive dashboard
-streamlit run dashboard.py
+# Launch the app
+streamlit run main.py
 ```
 
 ## 🧪 Testing & Development Notes
