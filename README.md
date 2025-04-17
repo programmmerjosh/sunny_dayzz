@@ -29,7 +29,7 @@ This project aims to track, compare, and analyze the accuracy of weather forecas
 |--------------         |---------------------------------------------- |
 | UI                    | [Streamlit](https://streamlit.io)             |
 | Backend Logic         | Python 3.9+ & LangChain                       |
-| Data Storage          | JSON (`weather_data.json`)                    |
+| Data Storage          | JSON (`cloud_cover.json`)                    |
 | Cloud Cover Forecasts | [OpenWeatherMap API](https://openweathermap.org/), [OpenMeteo API](https://open-meteo.com/) |
 | AI Forecast Analysis  | [OpenAI GPT API](https://platform.openai.com) |
 | Visuals               | Altair, Pandas                                |
@@ -39,7 +39,7 @@ This project aims to track, compare, and analyze the accuracy of weather forecas
 
 ## 🔄 JSON vs Firebase (Data Strategy)
 
-Currently, weather data is stored in a simple local `weather_data.json` file. This approach is:
+Currently, weather data is stored in a simple local `cloud_cover.json` file. This approach is:
 
 ✅ Perfect for early-stage projects  
 ✅ Fast, free, and easy to version  
@@ -96,7 +96,7 @@ streamlit run dashboard.py
 
 ## 🧪 Testing & Development Notes
 
-- Data is stored locally in `data/weather_data.json`. You can inspect or modify this file directly.
+- Data is stored locally in `data/cloud_cover.json`. You can inspect or modify this file directly.
 - A few sample data entries are included to help you get started.
 - The `weather.py` script can be run manually or automated using cron for daily forecast collection.
 - The dashboard dynamically analyzes cloud cover, forecast accuracy, and sunny days in real-time based on stored JSON data.
