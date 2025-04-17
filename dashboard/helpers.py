@@ -165,7 +165,7 @@ def get_openmeteo_cloud_cover_at_time(hourly_data, date_str, time_str):
 # ======================
 
 # ============ supporting functions ==============
-def save_forecast_to_file(new_data, filename="cloud_cover_forecast.json"):
+def save_forecast_to_file(new_data, filename="data/cloud_cover.json"):
     # Load existing data if file exists
     if os.path.exists(filename):
         with open(filename, "r") as f:
