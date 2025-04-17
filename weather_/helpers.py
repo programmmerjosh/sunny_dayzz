@@ -87,6 +87,10 @@ def save_forecast_to_file(new_data, filename="data/cloud_cover.json"):
     else:
         existing_data = []
 
+    if is_duplicate(new_data, existing_data):
+        print(f"🔁 Duplicate skipped: {new_data['location']} on {new_data['overview']['date_for']} ({new_data['overview']['num_of_days_between_forecast']} days before)")
+        return False  # Let caller know it was skipped
+
     # Append new data
     existing_data.append(new_data)
 
@@ -95,6 +99,18 @@ def save_forecast_to_file(new_data, filename="data/cloud_cover.json"):
         json.dump(existing_data, f, indent=2)
 
     print(f"✅ Forecast appended to {filename}")
+    return True  # Let caller know it was saved
+
+def is_duplicate(new_entry, existing_entries):
+    for existing in existing_entries:
+        if (
+            existing["location"].lower() == new_entry["location"].lower() and
+            existing["overview"]["date_for"] == new_entry["overview"]["date_for"] and
+            int(existing["overview"]["num_of_days_between_forecast"]) ==
+            int(new_entry["overview"]["num_of_days_between_forecast"])
+        ):
+            return True
+    return False
 
 def get_forecast_date(days_from_today: int = 0):
     """

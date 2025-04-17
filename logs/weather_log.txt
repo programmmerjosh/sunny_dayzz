@@ -85,4 +85,11 @@
 [2025-04-11 07:44:37.989303] Location: Amalfi, Generated: 3, Saved: 3
 [2025-04-11 07:44:41.985570] Location: Cannes, Generated: 3, Saved: 3
 [2025-04-11] Problem:  Right now, if you just ask for weather data, OpenAI might respond based on its own knowledge or general patterns, which isn’t good for real-time or location-specific accuracy.
-[2025-04-11] Proposed Solution: Integrate OpenWeatherMap API to get REAL (and reliable) weather data, then use GPT to analyse the fetched data accordingly.
+[2025-04-11] Proposed Solution: Integrate OpenWeatherMap API to get REAL (and reliable) weather data, then use GPT to analyse the fetched data accordingly.[2025-04-17] Location: Bristol, Generated: 3, Saved: 0
+[2025-04-17] Location: London, Generated: 3, Saved: 0
+[2025-04-17] Location: Barcelona, Generated: 3, Saved: 0
+[2025-04-17] Location: Logroño, Generated: 3, Saved: 0
+[2025-04-17] Location: Madrid, Generated: 3, Saved: 0
+[2025-04-17] Location: Port Elizabeth, Generated: 3, Saved: 0
+[2025-04-17] Location: Amalfi, Generated: 3, Saved: 0
+[2025-04-17] Location: Cannes, Generated: 3, Saved: 0

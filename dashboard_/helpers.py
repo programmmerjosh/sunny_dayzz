@@ -1,60 +1,75 @@
 import os
 
+import pandas as pd
 # ============ dashboard.py helper functions ==============
-def is_sunny(cloud_cover_dict):
-    """Return True if all time blocks are ≤ 20% cloud cover."""
-    try:
-        values = [int(v.strip('%')) for v in cloud_cover_dict.values()]
-        return all(v <= 20 for v in values)
-    except Exception:
-        return False
-    
-def compare_cloud_cover(predicted, actual, tolerance=10):
+def flatten_cloud_cover(entry):
+    """Extracts rows for each source from cloud cover list."""
+    date = pd.to_datetime(entry["overview"]["date_for"], format="%d/%m/%Y")
+    rows = []
+
+    for source_block in entry["cloud_cover"]:
+        source = source_block["source"]
+        cover = source_block["data"]
+        for time_utc, percent in cover.items():
+            rows.append({
+                "Date": date,
+                "Time": time_utc,
+                "Cloud Cover (%)": int(percent.strip('%')),
+                "Source": source,
+                "Location": entry["location"]
+            })
+
+    return rows
+
+def average_cloud_cover_by_block(source_data):
+    blocks = {
+        "morning": ["06:00 UTC", "09:00 UTC"],
+        "afternoon": ["12:00 UTC", "15:00 UTC"],
+        "evening": ["18:00 UTC"]
+    }
+    block_averages = {}
+    for block, times in blocks.items():
+        values = [
+            int(source_data[time].strip('%'))
+            for time in times if time in source_data
+        ]
+        block_averages[block] = sum(values) / len(values) if values else None
+    return block_averages
+
+def is_sunny_day(block_averages, threshold):
+    values = [v for v in block_averages.values() if v is not None]
+    return (sum(values) / len(values)) <= threshold if values else False
+
+def get_sunny_blocks(block_averages, threshold):
+    return {
+        block: (val is not None and val <= threshold)
+        for block, val in block_averages.items()
+    }
+
+def get_combined_block_averages(entry, selected_sources):
     """
-    Compare predicted vs actual cloud cover.
-    Returns number of matching time blocks (out of 3).
+    Given an entry and list of selected sources, return a dict with the average cloud cover
+    per time block (morning, afternoon, evening) across selected sources.
     """
-    matches = 0
-    for time in ["morning", "afternoon", "evening"]:
-        try:
-            pred_val = int(predicted[time].strip('%'))
-            actual_val = int(actual[time].strip('%'))
-            if abs(pred_val - actual_val) <= tolerance:
-                matches += 1
-        except Exception:
+    combined = {
+        "morning": [],
+        "afternoon": [],
+        "evening": []
+    }
+
+    for source in entry.get("cloud_cover", []):
+        if source["source"] not in selected_sources:
             continue
-    return matches
 
-def is_duplicate(new_entry, existing_entries):
-    for existing in existing_entries:
-        if (
-            existing["location"].lower() == new_entry["location"].lower() and
-            existing["prediction_date"] == new_entry["prediction_date"] and
-            int(existing["days_before"]) == int(new_entry["days_before"])
-        ):
-            return True
-    return False
+        block_avg = average_cloud_cover_by_block(source["data"])
+        for block, value in block_avg.items():
+            if value is not None:
+                combined[block].append(value)
 
-def relevant_weather_data_for(location, w_previous_weather):
-    # Filter previous_weather for only this location
-    # Can return "" if not relevant (or not implemented yet)
-    return w_previous_weather if location.lower() in w_previous_weather.lower() else ""
+    final_avg = {
+        block: (sum(values) / len(values)) if values else None
+        for block, values in combined.items()
+    }
 
-def get_relevant_weather_entries(file_path, target_dates, location):
-    relevant_entries = []
-    location = location.lower()
-    if not os.path.exists(file_path):
-        return ""
+    return final_avg
 
-    with open(file_path, "r") as f:
-        content = f.read()
-        entries = content.split("_next entry_")
-        for entry in entries:
-            entry_clean = entry.strip().lower()
-            if location in entry_clean:
-                for date in target_dates:
-                    if date in entry:
-                        relevant_entries.append(entry.strip())
-                        break
-    return "\n\n".join(relevant_entries)
-# ======================

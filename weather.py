@@ -15,6 +15,8 @@ def main():
     load_dotenv(os.path.join(BASE_DIR, ".env"))
     WEATHER_API_KEY = os.getenv("FREE_TIER_OPENWEATHERMAP_API_KEY")
 
+    log_path = os.path.join(BASE_DIR, "logs", "weather_log.txt")
+
     today = datetime.now(timezone.utc)
     d_in_three_days = get_forecast_date(3)
     d_in_five_days = get_forecast_date(5)
@@ -22,6 +24,10 @@ def main():
 
     # TODO: find a job for OpenAI API 
     # TODO: fix issue where we are getting N/A cloud cover for 0 day entries on Open-Meteo (maybe because we need to fetch data before 6am??)
+    # TODO: Change logic so that our charts only show 0 day data, not future forecast data
+    # TODO: reimplement the discrepancy checker with new logic
+    # TODO: reimplement forcast accuracy with new logic
+    # TODO: refactor charts into functions
 
     with open("data/locations.json") as f:
         LOCATIONS = json.load(f)
@@ -31,9 +37,22 @@ def main():
         lat, lon = get_lat_lon(loc, WEATHER_API_KEY)
 
         # Collect and save
+        saved = 0
+        generated = 0
+
         for forecast_date in target_dates:
             forecast_data = collect_cloud_cover_comparison(lat, lon, loc, forecast_date, WEATHER_API_KEY)
-            save_forecast_to_file(forecast_data)
+            generated += 1
+
+            if save_forecast_to_file(forecast_data):
+                saved += 1
+        
+        # Log
+        os.makedirs(os.path.join(BASE_DIR, "logs"), exist_ok=True)
+        with open(log_path, "a") as log:
+            log.write(
+                f"[{datetime.now(timezone.utc).strftime('%Y-%m-%d')}] Location: {loc}, Generated: {generated}, Saved: {saved}\n"
+            )
     
 if __name__ == "__main__":
     main()
