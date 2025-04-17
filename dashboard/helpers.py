@@ -41,18 +41,15 @@ def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key
         "cloud_cover": [
             {
                 "source": "OpenWeatherMap.com",
-                "data": owm_data
+                "data": owm_data,
+                "summary": generate_cloud_summary(owm_data)
             },
             {
                 "source": "OpenMeteo.com",
-                "data": om_data
+                "data": om_data,
+                "summary": generate_cloud_summary(om_data)
             }
         ],
-        "summary": {
-            "morning": "",
-            "afternoon": "",
-            "evening": ""
-        }
     }
 
     return output
@@ -216,7 +213,57 @@ def get_local_datetime(utc_datetime, lat, lon):
     
     return utc_datetime.astimezone(timezone.utc)
 
+def generate_cloud_summary(cloud_data):
+    """
+    Generates a weather summary for morning, afternoon, and evening based on cloud cover data.
+    Expects values in the format: {"06:00 UTC": "5%", "09:00 UTC": "10%", ...}
+    """
+    def percent_str_to_int(value):
+        return int(value.strip('%')) if value and value.endswith('%') else 0
+
+    def interpret_cloud_cover(average):
+        if 0 <= average <= 10:
+            return "Sunny & Clear"
+        elif 11 <= average <= 30:
+            return "Mostly sunny. Partly cloudy"
+        elif 31 <= average <= 40:
+            return "Partly cloudy"
+        elif 41 <= average <= 60:
+            return "Cloudy"
+        elif 61 <= average <= 85:
+            return "Mostly Overcast"
+        elif 86 <= average <= 100:
+            return "Fully Overcast"
+        return "Unknown"
+
+    # Extract and convert values
+    morning_vals = [percent_str_to_int(cloud_data.get("06:00 UTC", "0%")),
+                    percent_str_to_int(cloud_data.get("09:00 UTC", "0%"))]
+    afternoon_vals = [percent_str_to_int(cloud_data.get("12:00 UTC", "0%")),
+                      percent_str_to_int(cloud_data.get("15:00 UTC", "0%"))]
+    evening_val = percent_str_to_int(cloud_data.get("18:00 UTC", "0%"))
+
+    # Compute averages
+    morning_avg = sum(morning_vals) // len(morning_vals)
+    afternoon_avg = sum(afternoon_vals) // len(afternoon_vals)
+
+    # Interpret summary
+    return {
+        "morning": interpret_cloud_cover(morning_avg),
+        "afternoon": interpret_cloud_cover(afternoon_avg),
+        "evening": interpret_cloud_cover(evening_val)
+    }
 # ======================
+
+
+
+
+
+
+
+
+
+
 
 
 # ============ older functions that require updating ==============
