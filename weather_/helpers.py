@@ -1,13 +1,16 @@
 import os
-import requests
 import json
 
-from enums.weather_provider import WeatherProvider
-from datetime import datetime, timedelta, timezone
-from timezonefinder import TimezoneFinder
 from zoneinfo import ZoneInfo  # For Python 3.9+
+from timezonefinder import TimezoneFinder
+from datetime import datetime, timedelta, timezone
 
-# ========== top layer ============
+from enums.weather_provider import WeatherProvider
+
+from weather_.providers.open_weather_map import fetch_owm_3hour_forecast, get_owm_3hour_cloud_cover_at_time
+from weather_.providers.open_meteo import fetch_openmeteo_hourly_cloud_data, get_openmeteo_cloud_cover_at_time
+
+# ========== weather.py helper functions ============
 def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key):
 
     # today's date and current (local) time
@@ -71,100 +74,6 @@ def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
     else:
         raise ValueError(f"Unknown provider: {provider}")
 
-# ======================
-
-# ============ platform specific functions ==============
-# ====== Open Weather Map =======
-def get_lat_lon(city_name, api_key):
-
-    if not api_key:
-        raise Exception("API key not found. Did you set it in the .env file?")
-    
-    url = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name}&appid={api_key}"
-    response = requests.get(url)
-    data = response.json()
-    
-    if not data:
-        raise Exception(f"City '{city_name}' not found.")
-    
-    lat = data[0]['lat']
-    lon = data[0]['lon']
-    return lat, lon
-    
-def fetch_owm_3hour_forecast(lat, lon, api_key):
-    """
-    LIMITATIONS OF FREE TIER OPENWEATHERMAP API:
-    Hourly forecast: unavailable
-    Daily forecast: unavailable
-    Calls per minute: 60
-    3 hour forecast: (upt to) 5 days
-    """
-    url = (
-        f"http://api.openweathermap.org/data/2.5/forecast?"
-        f"lat={lat}&lon={lon}&units=metric&appid={api_key}"
-    )
-
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception(f"Exception thrown in fetch_owm_3hour_forecast.\nOpenWeatherMap API error: {response.status_code} - {response.text}")
-    
-    return response.json()
-
-def get_owm_3hour_cloud_cover_at_time(data, target_dt_utc):
-    closest_entry = None
-    min_diff = float('inf')
-
-    for entry in data.get("list", []):
-        forecast_time = datetime.fromtimestamp(entry["dt"], tz=timezone.utc)
-        diff = abs((forecast_time - target_dt_utc).total_seconds())
-
-        if diff < min_diff:
-            min_diff = diff
-            closest_entry = entry
-
-    if closest_entry:
-        return {
-            "datetime": datetime.fromtimestamp(closest_entry["dt"], tz=timezone.utc).isoformat(),
-            "cloud_cover": closest_entry["clouds"]["all"]
-        }
-
-    return {
-        "datetime": target_dt_utc.isoformat(),
-        "cloud_cover": None,
-        "error": "No matching data found"
-    }
-
-# ===========
-
-# ====== Open Meteo =======
-def fetch_openmeteo_hourly_cloud_data(lat, lon, days_ahead, timezone_str="auto"):
-    now_utc = datetime.now(timezone.utc)
-    target_date = (now_utc + timedelta(days=days_ahead)).strftime('%Y-%m-%d')
-    url = (
-        f"https://api.open-meteo.com/v1/forecast?"
-        f"latitude={lat}&longitude={lon}"
-        f"&hourly=cloudcover"
-        f"&timezone={timezone_str}"
-        f"&start_date={target_date}&end_date={target_date}"
-    )
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception(f"Exception thrown in fetch_openmeteo_hourly_cloud_data.\nOpen-Meteo API error: {response.status_code}")
-    return response.json()
-
-def get_openmeteo_cloud_cover_at_time(hourly_data, date_str, time_str):
-    full_target = f"{date_str}T{time_str}"
-    times = hourly_data.get("hourly", {}).get("time", [])
-    clouds = hourly_data.get("hourly", {}).get("cloudcover", [])
-    for t, c in zip(times, clouds):
-        if t == full_target:
-            return {"datetime": t, "cloud_cover": c}
-    return {"datetime": full_target, "cloud_cover": None, "error": "Not found"}
-
-# ===========
-# ======================
-
-# ============ supporting functions ==============
 def save_forecast_to_file(new_data, filename="data/cloud_cover.json"):
     # Load existing data if file exists
     if os.path.exists(filename):
@@ -253,73 +162,7 @@ def generate_cloud_summary(cloud_data):
         "afternoon": interpret_cloud_cover(afternoon_avg),
         "evening": interpret_cloud_cover(evening_val)
     }
-# ======================
 
 
 
 
-
-
-
-
-
-
-
-
-# ============ older functions that require updating ==============
-def is_sunny(cloud_cover_dict):
-    """Return True if all time blocks are ≤ 20% cloud cover."""
-    try:
-        values = [int(v.strip('%')) for v in cloud_cover_dict.values()]
-        return all(v <= 20 for v in values)
-    except Exception:
-        return False
-    
-def compare_cloud_cover(predicted, actual, tolerance=10):
-    """
-    Compare predicted vs actual cloud cover.
-    Returns number of matching time blocks (out of 3).
-    """
-    matches = 0
-    for time in ["morning", "afternoon", "evening"]:
-        try:
-            pred_val = int(predicted[time].strip('%'))
-            actual_val = int(actual[time].strip('%'))
-            if abs(pred_val - actual_val) <= tolerance:
-                matches += 1
-        except Exception:
-            continue
-    return matches
-
-def is_duplicate(new_entry, existing_entries):
-    for existing in existing_entries:
-        if (
-            existing["location"].lower() == new_entry["location"].lower() and
-            existing["prediction_date"] == new_entry["prediction_date"] and
-            int(existing["days_before"]) == int(new_entry["days_before"])
-        ):
-            return True
-    return False
-
-def relevant_weather_data_for(location, w_previous_weather):
-    # Filter previous_weather for only this location
-    # Can return "" if not relevant (or not implemented yet)
-    return w_previous_weather if location.lower() in w_previous_weather.lower() else ""
-
-def get_relevant_weather_entries(file_path, target_dates, location):
-    relevant_entries = []
-    location = location.lower()
-    if not os.path.exists(file_path):
-        return ""
-
-    with open(file_path, "r") as f:
-        content = f.read()
-        entries = content.split("_next entry_")
-        for entry in entries:
-            entry_clean = entry.strip().lower()
-            if location in entry_clean:
-                for date in target_dates:
-                    if date in entry:
-                        relevant_entries.append(entry.strip())
-                        break
-    return "\n\n".join(relevant_entries)

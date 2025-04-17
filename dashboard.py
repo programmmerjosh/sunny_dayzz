@@ -2,22 +2,15 @@ import streamlit as st
 import os
 import pandas as pd
 
-from dashboard.data_loader import load_data, get_filtered_data
-from dashboard.helpers import is_sunny
-from dashboard.charts import build_timeline_chart, build_pie_chart
-from dashboard.views import render_discrepancy_checker, render_forecast_accuracy
-
-# alternative color scheme
-# COLOR_SCHEME = {
-#     "Morning": "#a6c8ff",    # Light sky blue
-#     "Afternoon": "#5a9bd5",  # Mid blue-grey
-#     "Evening": "#2e3b4e"     # Dark twilight blue
-# }
+from dashboard_.helpers import is_sunny
+from dashboard_.data_loader import load_data, get_filtered_data
+from dashboard_.charts import build_timeline_chart, build_pie_chart
+from dashboard_.views import render_discrepancy_checker, render_forecast_accuracy
 
 COLOR_SCHEME = {
-    "Morning": "#d3d3d3",    # Light grey
-    "Afternoon": "#a9a9a9",  # Medium grey
-    "Evening": "#696969"     # Dark grey
+    "Morning": "#d3d3d3",    # Light grey   # alternative: "Morning": "#a6c8ff",    # Light sky blue
+    "Afternoon": "#a9a9a9",  # Medium grey   # alternative: "Afternoon": "#5a9bd5",  # Mid blue-grey
+    "Evening": "#696969"     # Dark grey   # alternative: "Evening": "#2e3b4e"     # Dark twilight blue
 }
 
 st.set_page_config(page_title="Sunny Dayzz", layout="wide")
@@ -25,7 +18,8 @@ st.title("🌞 Sunny Dayzz Dashboard")
 st.text("NOTE: the Cloud Cover Trend graph cannot be accurate until we manage to acquire more data over a substancial amount of time."
 "\nDate we started collecting data for this project: 02 April 2025")
 
-DATA_PATH = os.path.join("data", "weather_data.json") # real data
+# DATA_PATH = os.path.join("data", "weather_data.json") # old data location
+DATA_PATH = os.path.join("data", "cloud_cover.json") # real data
 # DATA_PATH = os.path.join("data", "dummy_data.json") # dummy data
 data = load_data(DATA_PATH)
 
@@ -40,7 +34,7 @@ filtered = get_filtered_data(data, selected_location)
 # 📈 Timeline Chart
 timeline_data = []
 for entry in filtered:
-    date = pd.to_datetime(entry["prediction_date"], format="%d/%m/%Y")  # 💥 Convert to datetime here
+    date = pd.to_datetime(entry["date_for"], format="%d/%m/%Y")  # 💥 Convert to datetime here
     cloud_cover = {
         time.title(): int(value.strip('%'))  # Make sure keys are title case
         for time, value in entry["cloud_cover"].items()

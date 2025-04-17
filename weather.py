@@ -1,11 +1,13 @@
 def main():
-    from dotenv import load_dotenv
     import os
     import datetime
     import json
 
-    from dashboard.helpers import get_forecast_date, get_lat_lon, collect_cloud_cover_comparison, save_forecast_to_file
+    from dotenv import load_dotenv
     from datetime import datetime, timezone
+
+    from weather_.helpers import get_forecast_date, collect_cloud_cover_comparison, save_forecast_to_file
+    from weather_.providers.open_weather_map import get_lat_lon
 
     # 🔧 Define base directory of the script
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))

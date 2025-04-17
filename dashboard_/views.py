@@ -6,7 +6,7 @@ def render_discrepancy_checker(filtered):
     st.markdown("## 🔍 Prediction Discrepancy Checker")
     prediction_map = defaultdict(dict)
     for entry in filtered:
-        prediction_map[entry["prediction_date"]][int(entry["days_before"])] = entry
+        prediction_map[entry["date_for"]][int(entry["days_before"])] = entry
 
     for pred_date, predictions in prediction_map.items():
         if all(x in predictions for x in [0, 3, 7]):
