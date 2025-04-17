@@ -16,6 +16,7 @@ COLOR_SCHEME = {
 
 st.set_page_config(page_title="Sunny Dayzz", layout="wide")
 st.title("🌞 Sunny Dayzz Dashboard")
+st.text("NOTE: Our charts only show 0-day (on-the-day) forecasts and not future predictions")
 
 DATA_PATH = os.path.join("data", "cloud_cover.json") # real data
 data = load_data(DATA_PATH)
@@ -28,10 +29,19 @@ locations = sorted(set(entry["location"] for entry in data))
 selected_location = st.sidebar.selectbox("Select a location", locations)
 filtered = get_filtered_data(data, selected_location)
 
+actuals_only = [
+    e for e in filtered
+    if e["overview"]["num_of_days_between_forecast"] == 0
+]
+
+if not actuals_only:
+    st.warning("⚠️ No 0-day (actual) forecast data available yet for this location.")
+    st.stop()
+
 
 # ========== 📈 Timeline Charts ============# 
 timeline_data = []
-for entry in filtered:
+for entry in actuals_only:
     timeline_data.extend(flatten_cloud_cover(entry))
 
 # dataframe timeline
@@ -62,7 +72,7 @@ st.markdown("## ☁️ Cloud Cover by Source")
 st.altair_chart(chart, use_container_width=True)
 
 # Unique options from your dataframe
-available_dates = sorted(df_timeline["Date"].dt.strftime("%d/%m/%Y").unique())
+available_dates = sorted(set(e["overview"]["date_for"] for e in actuals_only))
 available_sources = sorted(df_timeline["Source"].unique())
 
 # Sidebar filters
@@ -123,7 +133,7 @@ for entry in zero_day:
     else:
         cloudy_days.append(entry)
 
-st.markdown("## ☀️ Sunny vs Cloudy Days (0-Day Forecasts)")
+st.markdown("## ☀️ Sunny vs Cloudy Days")
 st.caption("Note: These charts reflect only 0-day (actual) forecast results.")
 
 st.metric("Total Days", len(zero_day))
