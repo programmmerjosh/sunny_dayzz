@@ -31,7 +31,7 @@ This project aims to track, compare, and analyze the accuracy of weather forecas
 | Backend Logic         | Python 3.9+ & LangChain                       |
 | Data Storage          | JSON (`cloud_cover.json`)                    |
 | Cloud Cover Forecasts | [OpenWeatherMap API](https://openweathermap.org/), [OpenMeteo API](https://open-meteo.com/) |
-| AI Forecast Analysis  | [OpenAI GPT API](https://platform.openai.com) |
+| Open AI Data Analysis (TO BE REIMPLEMENTED)  | [OpenAI GPT API](https://platform.openai.com) |
 | Visuals               | Altair, Pandas                                |
 | Automation            | Local cron job for daily predictions          |
 
@@ -60,10 +60,10 @@ To run this project locally, you'll need:
 
 ### ✅ Requirements
 - Python 3.9+
-- An OpenAI API key with active credits  
-  ➡️ [Get an OpenAI API key here](https://platform.openai.com/account/api-keys)
+- (currently not required) An OpenAI API key with active credits  
+  ➡️ [An OpenAI API key](https://platform.openai.com/account/api-keys)
 - An OpenWeatherMap API key
-  ➡️ [Get an OpenWeatherMap API key here](https://openweathermap.org/api)
+  ➡️ [An OpenWeatherMap API key](https://openweathermap.org/api)
 
 ### 📦 Recommended Install Steps
 
@@ -92,7 +92,7 @@ echo "FREE_TIER_OPENWEATHERMAP_API_KEY=your_openweathermap_api_key_here" > .env
 python weather.py
 
 # Launch the app
-streamlit run main.py
+streamlit run Dashboard.py
 ```
 
 ## 🧪 Testing & Development Notes
