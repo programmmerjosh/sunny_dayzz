@@ -23,10 +23,9 @@ def main():
     target_dates = {today, d_in_three_days, d_in_five_days}
 
     # TODO: find a job for OpenAI API 
-    # TODO: fix issue where we are getting N/A cloud cover for 0 day entries on Open-Meteo (maybe because we need to fetch data before 6am??)
     # TODO: reimplement the discrepancy checker with new logic
-    # TODO: reimplement forcast accuracy with new logic
-    # TODO: refactor charts into functions
+
+    # TODO: test forcast accuracy new logic
 
     with open("data/locations.json") as f:
         LOCATIONS = json.load(f)

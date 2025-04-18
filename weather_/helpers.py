@@ -30,8 +30,9 @@ def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key
         om_result = get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENMETEO)
 
         time_str = f"{hour:02d}:00 UTC"
-        owm_data[time_str] = f"{owm_result['cloud_cover']}%" if owm_result['cloud_cover'] is not None else "N/A"
-        om_data[time_str] = f"{om_result['cloud_cover']}%" if om_result['cloud_cover'] is not None else "N/A"
+        owm_data[time_str] = format_cloud_cover(owm_result.get('cloud_cover'))
+        om_data[time_str] = format_cloud_cover(om_result.get('cloud_cover'))
+
 
     # Build the JSON structure
     output = {
@@ -179,6 +180,17 @@ def generate_cloud_summary(cloud_data):
         "evening": interpret_cloud_cover(evening_val)
     }
 
+def format_cloud_cover(raw_value):
+    try:
+        if raw_value is None:
+            return None  # or "Missing"
+        raw_str = str(raw_value).strip().lower()
+        if raw_str in ["", "n/a", "na", "null"]:
+            return None
+        val = int(float(raw_str))
+        return f"{val}%"
+    except (ValueError, TypeError):
+        return None
 
 
 
