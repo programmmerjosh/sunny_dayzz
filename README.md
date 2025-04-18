@@ -82,6 +82,7 @@ pip install streamlit
 pip install requests
 pip install timezonefinder
 pip install python-dotenv
+pip install seaborn
 
 # Set your OpenAI API key in a .env file
 echo "GPT_API_KEY=your_openai_api_key_here" > .env

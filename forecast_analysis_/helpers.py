@@ -100,3 +100,76 @@ def load_forecast_data(filepath=DATA_FILE):
     except json.JSONDecodeError as e:
         print(f"❌ Failed to decode JSON: {e}")
         return []
+    
+def build_discrepancy_map(entries):
+    """
+    Group forecast entries by location → date_for → source → list of forecasts.
+    Each list contains different forecast ages (e.g. 7-day, 3-day, 0-day).
+    """
+    prediction_map = defaultdict(lambda: defaultdict(lambda: defaultdict(list)))
+
+    for entry in entries:
+        location = entry.get("location")
+        overview = entry.get("overview", {})
+        date_for = overview.get("date_for")
+        source_blocks = entry.get("cloud_cover", [])
+
+        for block in source_blocks:
+            source = block.get("source")
+            if not all([location, date_for, source]):
+                continue  # skip invalid entries
+
+            prediction_map[location][date_for][source].append({
+                "days_before": overview.get("num_of_days_between_forecast"),
+                "collected_on": overview.get("date_time_collected"),
+                "data": block.get("data", {}),
+                "summary": block.get("summary", {})
+            })
+
+    return prediction_map
+
+def get_discrepancies_for_date(source_data_by_day, threshold):
+    """
+    Returns:
+        - list of dicts with: hour, source, days_before, value (int or None)
+        - set of (hour, source, days_before) to highlight (if discrepancy > threshold)
+    """
+    all_rows = []
+    highlight_cells = set()
+    hour_values_by_time = defaultdict(list)  # hour → list of values to compare
+
+    for source, forecasts in source_data_by_day.items():
+        for forecast in forecasts:
+            days_before = forecast["days_before"]
+            data = forecast["data"]
+
+            for hour, val in data.items():
+                try:
+                    value = int(str(val).strip('%'))
+                except (ValueError, TypeError):
+                    value = None
+
+                # Store row for visual tables/charts
+                all_rows.append({
+                    "Hour": hour,
+                    "Source": source,
+                    "Days Before": f"{days_before}d",
+                    "Cloud Cover (%)": value
+                })
+
+                # For discrepancy detection
+                if value is not None:
+                    hour_values_by_time[hour].append((value, source, days_before))
+
+    # Detect discrepancies > threshold
+    for hour, values in hour_values_by_time.items():
+        raw_values = [v[0] for v in values]
+        if len(raw_values) < 2:
+            continue
+        max_val = max(raw_values)
+        min_val = min(raw_values)
+        if max_val - min_val > threshold:
+            for (_, src, day) in values:
+                highlight_cells.add((hour, src, f"{day}d"))
+
+    return all_rows, highlight_cells
