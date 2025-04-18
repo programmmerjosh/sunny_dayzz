@@ -3,7 +3,7 @@ import streamlit as st
 from forecast_analysis_.helpers import evaluate_source_accuracy, load_forecast_data
 from forecast_analysis_.discrepancy_view import render_discrepancy_checker
 
-st.set_page_config(page_title="📊 Forecast Accuracy", page_icon="📊")
+st.set_page_config(page_title="📊 Forecast Accuracy", page_icon="🌞")
 st.title("📊 Forecast Accuracy & Discrepancy Analysis")
 
 st.markdown("""

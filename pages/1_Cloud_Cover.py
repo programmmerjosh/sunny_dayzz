@@ -6,7 +6,7 @@ from cloud_cover_.helpers import is_sunny_day, flatten_cloud_cover, get_sunny_bl
 from cloud_cover_.data_loader import load_data, get_filtered_data
 from cloud_cover_.charts import build_pie_chart, build_time_chart
 
-st.set_page_config(page_title="Sunny Dayzz", layout="wide")
+st.set_page_config(page_title="☁️ Cloud Cover", layout="wide", page_icon="🌞")
 st.title("☁️ Cloud Cover")
 st.text("NOTE: Our charts only show 0-day (on-the-day) forecasts and not future predictions")
 
