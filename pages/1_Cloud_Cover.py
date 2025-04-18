@@ -2,13 +2,13 @@ import streamlit as st
 import os
 import pandas as pd
 
-from dashboard_.helpers import is_sunny_day, flatten_cloud_cover, get_sunny_blocks, get_combined_block_averages
-from dashboard_.data_loader import load_data, get_filtered_data
-from dashboard_.charts import build_pie_chart, build_time_chart
+from cloud_cover_.helpers import is_sunny_day, flatten_cloud_cover, get_sunny_blocks, get_combined_block_averages
+from cloud_cover_.data_loader import load_data, get_filtered_data
+from cloud_cover_.charts import build_pie_chart, build_time_chart
 # from dashboard_.views import render_discrepancy_checker, render_forecast_accuracy
 
 st.set_page_config(page_title="Sunny Dayzz", layout="wide")
-st.title("🌞 Sunny Dayzz Dashboard")
+st.title("☁️ Cloud Cover")
 st.text("NOTE: Our charts only show 0-day (on-the-day) forecasts and not future predictions")
 
 DATA_PATH = os.path.join("data", "cloud_cover.json") # real data
@@ -135,11 +135,3 @@ st.metric("☀️ Sunny Blocks", sunny_blocks)
 st.metric("🌥️ Cloudy Blocks", cloudy_blocks)
 
 st.altair_chart(build_pie_chart(sunny_blocks, cloudy_blocks), use_container_width=True)
-
-# previous
-
-# # 🔍 Discrepancy Checker
-# prediction_map = render_discrepancy_checker(filtered)
-
-# # 📊 Forecast Accuracy
-# render_forecast_accuracy(prediction_map)
