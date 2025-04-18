@@ -25,6 +25,7 @@ def main():
     # TODO: find a job for OpenAI API
     # TODO: add more weather data sources
     # TODO: test forcast accuracy new logic
+    # TODO: think about ways to use the cloud cover summary ~ perhaps a table where we show a counter for each category for mornings, afternoons and nights
     # TODO: Deploy the app and make sure `python weather.py` is called automatically daily
 
     with open("data/locations.json") as f:
