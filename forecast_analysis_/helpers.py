@@ -128,20 +128,27 @@ def build_discrepancy_map(entries):
 
     return prediction_map
 
-def get_discrepancies_for_date(source_data_by_day, threshold):
+def get_discrepancies_for_date(source_data_by_day, threshold, filter_days=None):
     """
     Returns:
-        - list of dicts with: hour, source, days_before, value (int or None)
+        - list of dicts with: hour, source, days_before, value
         - set of (hour, source, days_before) to highlight (if discrepancy > threshold)
     """
+    from collections import defaultdict
+
     all_rows = []
     highlight_cells = set()
-    hour_values_by_time = defaultdict(list)  # hour → list of values to compare
+    hour_values_by_time = defaultdict(list)  # hour → list of (value, source, day_label)
 
     for source, forecasts in source_data_by_day.items():
         for forecast in forecasts:
-            days_before = forecast["days_before"]
-            data = forecast["data"]
+            days_before = forecast.get("days_before")
+            days_label = f"{days_before}d"
+
+            if filter_days and days_label not in filter_days:
+                continue  # ✅ skip if forecast age is not selected
+
+            data = forecast.get("data", {})
 
             for hour, val in data.items():
                 try:
@@ -149,27 +156,25 @@ def get_discrepancies_for_date(source_data_by_day, threshold):
                 except (ValueError, TypeError):
                     value = None
 
-                # Store row for visual tables/charts
                 all_rows.append({
                     "Hour": hour,
                     "Source": source,
-                    "Days Before": f"{days_before}d",
+                    "Days Before": days_label,
                     "Cloud Cover (%)": value
                 })
 
-                # For discrepancy detection
                 if value is not None:
-                    hour_values_by_time[hour].append((value, source, days_before))
+                    hour_values_by_time[hour].append((value, source, days_label))
 
-    # Detect discrepancies > threshold
+    # ✅ Now detect discrepancies
     for hour, values in hour_values_by_time.items():
-        raw_values = [v[0] for v in values]
-        if len(raw_values) < 2:
+        if len(values) < 2:
             continue
-        max_val = max(raw_values)
-        min_val = min(raw_values)
-        if max_val - min_val > threshold:
+
+        raw_values = [v[0] for v in values]
+        if max(raw_values) - min(raw_values) > threshold:
             for (_, src, day) in values:
-                highlight_cells.add((hour, src, f"{day}d"))
+                highlight_cells.add((hour, src, day))
 
     return all_rows, highlight_cells
+
