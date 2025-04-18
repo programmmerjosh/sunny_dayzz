@@ -74,12 +74,12 @@ st.altair_chart(build_time_chart(filtered_df), use_container_width=True)
 
 # set threshold for sunny day/time-block
 sunny_threshold = st.sidebar.slider(
-    "Define sunny threshold (%)", 20, 65, 35,
+    "Define cloudy threshold (%)", 20, 65, 35,
 )
 st.sidebar.caption(
-    "☀️ This slider lets you define what percentage of cloud cover still counts as 'sunny'.\n"
-    "A lower threshold means you're more strict (e.g., ≤20% = very clear skies),\n"
-    "while a higher threshold allows for more clouds in your 'sunny' days."
+    "☀️ This slider lets you define what percentage of cloud cover for any particular day/time-period you still clasify as 'sunny'.\n"
+    "A lower threshold means you're more strict (e.g., setting it to 20% means that 21% cloud cover for any day would count as a cloudy day),\n"
+    "while a higher threshold allows for more clouds in your 'sunny' days/mornings/afternoons/evenings."
 )
 
 selected_block = st.sidebar.radio(
