@@ -22,10 +22,10 @@ def main():
     d_in_five_days = get_forecast_date(5)
     target_dates = {today, d_in_three_days, d_in_five_days}
 
-    # TODO: find a job for OpenAI API 
-    # TODO: reimplement the discrepancy checker with new logic
-
+    # TODO: find a job for OpenAI API
+    # TODO: add more weather data sources
     # TODO: test forcast accuracy new logic
+    # TODO: Deploy the app and make sure `python weather.py` is called automatically daily
 
     with open("data/locations.json") as f:
         LOCATIONS = json.load(f)
