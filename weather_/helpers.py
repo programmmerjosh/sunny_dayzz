@@ -68,16 +68,26 @@ def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
 
     elif provider == WeatherProvider.OPENMETEO:
         days_ahead = (target_datetime_utc.date() - datetime.now(timezone.utc).date()).days
-        
+
         # Round down to nearest hour
         target_hour_utc = target_datetime_utc.replace(minute=0, second=0, microsecond=0)
 
         data = fetch_openmeteo_hourly_cloud_data(lat, lon, days_ahead)
+        
+        if not data or "hourly" not in data:
+            print("❌ OpenMeteo data is None or invalid — skipping", flush=True)
+            return {
+                "datetime": target_hour_utc.isoformat(),
+                "cloud_cover": None,
+                "error": "OpenMeteo fetch failed"
+            }
+
         print("🌤️ Request to OpenMeteo complete", flush=True)
         date_str = target_hour_utc.strftime('%Y-%m-%d')
         time_str = target_hour_utc.strftime('%H:%M')
 
         return get_openmeteo_cloud_cover_at_time(data, date_str, time_str)
+
     else:
         raise ValueError(f"Unknown provider: {provider}")
 
