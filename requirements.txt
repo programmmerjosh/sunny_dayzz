@@ -1,0 +1,8 @@
+streamlit
+requests
+timezonefinder
+python-dotenv
+seaborn
+pandas
+altair
+openai
