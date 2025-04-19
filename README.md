@@ -1,25 +1,25 @@
 # ☀️ Sunny Dayzz
 
-Sunny Dayzz is an AI-powered weather app built with Streamlit, OpenAI, and Python. It helps analyze, visualize, and validate weather prediction data collected over time — with a special focus on **forecast accuracy** and **sunny day identification**. 🌤️
+Sunny Dayzz is a weather forecast accuracy app built with Streamlit, ChatGPT, and Python. It helps analyze, visualize, and validate weather prediction data collected over time — with a special focus on **forecast accuracy** and **sunny day identification**. 🌤️
 
 ---
 
 ## 📝 Project Overview
 
-This project aims to track, compare, and analyze the accuracy of weather forecasts made 7 days and 3 days before the predicted date vs actual on-the-day weather predictions. *We are leveraging AI and automation to handle the tasks of initiating the collection of the data AND producing a visual analysis of our results.* Over time, this data enables users to monitor model drift, forecast consistency, and real-world accuracy — with automated analysis of discrepancies and daily cloud cover trends.
+This project aims to track, compare, and analyze the accuracy of weather forecasts made 5 days and 3 days before the predicted date vs actual on-the-day weather predictions. We were leveraging AI to collect the weather data however, AI-collected-data proved to be inaccurate in many cases as it began to generate its own predictions based on our collected data. Now, we've moved to collecting the data from well established weather forecast APIs. The plan is to delegate other tasks to the OpenAI API in the near future. Our data collection is now automated. Over time, this data should enable users to recognize discrepancies in weather forecasts as well as weather forecast sources (and their accuracy over time) as well as keep track of daily cloud cover trends, number of sunny days (overall), mornings, afternoons, and evenings in a particular city we've collected data for and potentially so much more.
 
 ---
 
 ## 📦 Features
 
-- 📈 **Cloud Cover Timeline**: Visualize cloud cover predictions across all time blocks (morning, afternoon, evening)
-- 🔍 **Discrepancy Checker**: Compare 7/3/0 day predictions for each date side-by-side
-- ☀️ **Sunny Day Detection**: Automatically flags days with clear weather
-- 📊 **Forecast Accuracy Scoring**: Calculates how accurate 7-day and 3-day forecasts are versus 0-day observations
-- 🥧 **Sunny vs Cloudy Ratio**: Visual breakdown of actual sunny days
+- 📈 **Cloud Cover Timeline**: Visualize cloud cover predictions between 6am - 6pm daily in 3 hour time-blocks
+- 🔍 **Discrepancy Checker**: Compare 5/3/0 day predictions across sources for each date side-by-side
+- 📊 **Forecast Accuracy Scoring**: Calculates how accurate 5-day and 3-day forecasts are versus 0-day observations
+- 🥧 **Sunny vs Cloudy Ratio**: Visual breakdown of actual sunny days AND filter for sunny mornings, afternoons, or evenings
 - 🗺️ **Multi-location Support**: Collect and analyze forecasts for multiple geographic locations, each with its own dashboard view
-- 📅 **Automation Ready**: Daily forecast logging is scheduled locally using cron
-- ☁️ **Deployment-Ready**: Next step: hosting via Streamlit Cloud or other providers
+- 📅 **Automation**: Daily forecast logging is scheduled by GitHub Actions
+- ☁️ **Deployed**: Hosted on Streamlit Cloud
+- 🤖 **AI Ready**: OpenAI API already linked up and ready for when we have appropriate tasks to give it
 
 ---
 
@@ -33,7 +33,7 @@ This project aims to track, compare, and analyze the accuracy of weather forecas
 | Cloud Cover Forecasts | [OpenWeatherMap API](https://openweathermap.org/), [OpenMeteo API](https://open-meteo.com/) |
 | Open AI Data Analysis (TO BE REIMPLEMENTED)  | [OpenAI GPT API](https://platform.openai.com) |
 | Visuals               | Altair, Pandas                                |
-| Automation            | Local cron job for daily predictions          |
+| Automation            | GitHub Actions         |
 
 ---
 
