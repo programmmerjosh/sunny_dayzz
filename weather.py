@@ -33,7 +33,10 @@ def main():
     with open("data/locations.json") as f:
         LOCATIONS = json.load(f)
 
+    print("🌍 Starting location loop...", flush=True)
+
     for loc in LOCATIONS:
+        print(f"📍 Processing location: {loc}", flush=True)
         print(f"📍 Collecting forecast for {loc}...")
         lat, lon = get_lat_lon(loc, WEATHER_API_KEY)
 
@@ -45,6 +48,7 @@ def main():
             forecast_data = collect_cloud_cover_comparison(lat, lon, loc, forecast_date, WEATHER_API_KEY)
             generated += 1
 
+            print("📝 Writing data to file...", flush=True)
             if save_forecast_to_file(forecast_data):
                 saved += 1
         

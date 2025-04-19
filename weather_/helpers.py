@@ -63,6 +63,7 @@ def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
         if not api_key:
             raise ValueError("OpenWeatherMap API key is required.")
         data = fetch_owm_3hour_forecast(lat, lon, api_key)
+        print("📡 Sending request to OpenWeatherMap...", flush=True)
         return get_owm_3hour_cloud_cover_at_time(data, target_datetime_utc)
 
     elif provider == WeatherProvider.OPENMETEO:
@@ -72,6 +73,7 @@ def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
         target_hour_utc = target_datetime_utc.replace(minute=0, second=0, microsecond=0)
 
         data = fetch_openmeteo_hourly_cloud_data(lat, lon, days_ahead)
+        print("🌤️ Request to OpenMeteo complete", flush=True)
         date_str = target_hour_utc.strftime('%Y-%m-%d')
         time_str = target_hour_utc.strftime('%H:%M')
 
