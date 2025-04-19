@@ -1021,21 +1021,6 @@
           "afternoon": "Fully Overcast",
           "evening": "Fully Overcast"
         }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
-        }
       }
     ]
   },
@@ -1140,21 +1125,6 @@
           "morning": "Fully Overcast",
           "afternoon": "Fully Overcast",
           "evening": "Fully Overcast"
-        }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
         }
       }
     ]
@@ -1261,21 +1231,6 @@
           "afternoon": "Cloudy",
           "evening": "Fully Overcast"
         }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
-        }
       }
     ]
   },
@@ -1380,21 +1335,6 @@
           "morning": "Cloudy",
           "afternoon": "Cloudy",
           "evening": "Mostly Overcast"
-        }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
         }
       }
     ]
@@ -1501,21 +1441,6 @@
           "afternoon": "Mostly Overcast",
           "evening": "Fully Overcast"
         }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
-        }
       }
     ]
   },
@@ -1620,21 +1545,6 @@
           "morning": "Sunny & Clear",
           "afternoon": "Mostly sunny. Partly cloudy",
           "evening": "Mostly sunny. Partly cloudy"
-        }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
         }
       }
     ]
@@ -1741,21 +1651,6 @@
           "afternoon": "Partly cloudy",
           "evening": "Mostly sunny. Partly cloudy"
         }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
-        }
       }
     ]
   },
@@ -1860,21 +1755,6 @@
           "morning": "Partly cloudy",
           "afternoon": "Mostly Overcast",
           "evening": "Cloudy"
-        }
-      },
-      {
-        "source": "OpenMeteo.com",
-        "data": {
-          "06:00 UTC": null,
-          "09:00 UTC": null,
-          "12:00 UTC": null,
-          "15:00 UTC": null,
-          "18:00 UTC": null
-        },
-        "summary": {
-          "morning": "Sunny & Clear",
-          "afternoon": "Sunny & Clear",
-          "evening": "Sunny & Clear"
         }
       }
     ]
