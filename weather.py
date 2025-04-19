@@ -1,5 +1,4 @@
 def main():
-    import sys
     import os
     import datetime
     import json
@@ -18,15 +17,13 @@ def main():
 
     log_path = os.path.join(BASE_DIR, "logs", "weather_log.txt")
 
+    # get API keys
     gpt_key = os.getenv("GPT_API_KEY")
     owm_key = os.getenv("FREE_TIER_OPENWEATHERMAP_API_KEY")
 
+    # print 'True' in the logs if we successfully get both API keys
     print("✅ GPT API key present:", bool(gpt_key), flush=True)
     print("✅ OpenWeather key present:", bool(owm_key), flush=True)
-    
-    sys.exit("✅ Test exit after checking API keys (manual test)")
-
-
 
     today = datetime.now(timezone.utc)
     d_in_three_days = get_forecast_date(3)
