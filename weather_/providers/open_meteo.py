@@ -1,7 +1,6 @@
 
-import requests
-
 from datetime import datetime, timedelta, timezone
+from weather_.utils import safe_get
 
 def fetch_openmeteo_hourly_cloud_data(lat, lon, days_ahead, timezone_str="auto"):
     now_utc = datetime.now(timezone.utc)
@@ -13,10 +12,8 @@ def fetch_openmeteo_hourly_cloud_data(lat, lon, days_ahead, timezone_str="auto")
         f"&timezone={timezone_str}"
         f"&start_date={target_date}&end_date={target_date}"
     )
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception(f"Exception thrown in fetch_openmeteo_hourly_cloud_data.\nOpen-Meteo API error: {response.status_code}")
-    return response.json()
+    
+    return safe_get(source_name="OpenMeteo", url=url)
 
 def get_openmeteo_cloud_cover_at_time(hourly_data, date_str, time_str):
     full_target = f"{date_str}T{time_str}"

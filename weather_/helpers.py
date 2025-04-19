@@ -197,6 +197,3 @@ def format_cloud_cover(raw_value):
         return f"{val}%"
     except (ValueError, TypeError):
         return None
-
-
-

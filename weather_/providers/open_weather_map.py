@@ -1,6 +1,7 @@
 import requests
 
 from datetime import datetime, timezone
+from weather_.utils import safe_get
 
 def get_lat_lon(city_name, api_key):
 
@@ -31,11 +32,7 @@ def fetch_owm_3hour_forecast(lat, lon, api_key):
         f"lat={lat}&lon={lon}&units=metric&appid={api_key}"
     )
 
-    response = requests.get(url)
-    if response.status_code != 200:
-        raise Exception(f"Exception thrown in fetch_owm_3hour_forecast.\nOpenWeatherMap API error: {response.status_code} - {response.text}")
-    
-    return response.json()
+    return safe_get(source_name="OpenWeatherMap", url=url)
 
 def get_owm_3hour_cloud_cover_at_time(data, target_dt_utc):
     closest_entry = None
