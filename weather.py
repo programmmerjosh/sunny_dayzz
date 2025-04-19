@@ -1,4 +1,5 @@
 def main():
+    import sys
     import os
     import datetime
     import json
@@ -20,8 +21,12 @@ def main():
     gpt_key = os.getenv("GPT_API_KEY")
     owm_key = os.getenv("FREE_TIER_OPENWEATHERMAP_API_KEY")
 
-    print("✅ GPT API key present:", bool(gpt_key))
-    print("✅ OpenWeather key present:", bool(owm_key))
+    print("✅ GPT API key present:", bool(gpt_key), flush=True)
+    print("✅ OpenWeather key present:", bool(owm_key), flush=True)
+    
+    sys.exit("✅ Test exit after checking API keys (manual test)")
+
+
 
     today = datetime.now(timezone.utc)
     d_in_three_days = get_forecast_date(3)
