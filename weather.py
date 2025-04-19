@@ -17,6 +17,12 @@ def main():
 
     log_path = os.path.join(BASE_DIR, "logs", "weather_log.txt")
 
+    gpt_key = os.getenv("GPT_API_KEY")
+    owm_key = os.getenv("FREE_TIER_OPENWEATHERMAP_API_KEY")
+
+    print("✅ GPT API key present:", bool(gpt_key))
+    print("✅ OpenWeather key present:", bool(owm_key))
+
     today = datetime.now(timezone.utc)
     d_in_three_days = get_forecast_date(3)
     d_in_five_days = get_forecast_date(5)
