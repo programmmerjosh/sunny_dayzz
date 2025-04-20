@@ -1,5 +1,4 @@
 import os
-import asyncio
 import json
 
 from zoneinfo import ZoneInfo  # For Python 3.9+
@@ -13,42 +12,61 @@ from weather_.providers.open_meteo import fetch_openmeteo_hourly_cloud_data, get
 
 # ========== weather.py helper functions ============
 async def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key):
+    # 🌍 Local datetime (for logging/metadata)
     local_dt = get_local_datetime(datetime.now(timezone.utc), lat, lon)
+
+    # 🕒 Target forecast hours
     target_hours = [6, 9, 12, 15, 18]
+
+    # 📦 Prepare containers
     owm_data = {}
     om_data = {}
 
-    async def fetch_for_hour(hour):
+    # 📆 Days ahead for OpenMeteo request
+    days_ahead = (date_for_dt.date() - datetime.now(timezone.utc).date()).days
+
+    # 🚀 Prefetch both APIs just once
+    try:
+        owm_shared = await fetch_owm_3hour_forecast(lat, lon, api_key)
+        print("📡 OpenWeatherMap forecast fetched", flush=True)
+    except Exception as e:
+        print(f"❌ Failed to fetch OpenWeatherMap: {e}", flush=True)
+        owm_shared = None
+
+    try:
+        om_shared = await rate_limited_openmeteo_call(fetch_openmeteo_hourly_cloud_data, lat, lon, days_ahead)
+        print("🌤️ OpenMeteo forecast fetched", flush=True)
+    except Exception as e:
+        print(f"❌ Failed to fetch OpenMeteo: {e}", flush=True)
+        om_shared = None
+
+    # 🔁 Loop through each forecast hour
+    for hour in target_hours:
         target_dt = date_for_dt.replace(hour=hour)
 
         try:
-            owm_result = await get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENWEATHERMAP, api_key)
+            owm_result = await get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENWEATHERMAP, api_key, shared_data=owm_shared)
         except Exception as e:
             print(f"❌ OWM error at {hour}: {e}", flush=True)
             owm_result = {"cloud_cover": None}
 
         try:
-            om_result = await get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENMETEO)
+            om_result = await get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENMETEO, shared_data=om_shared)
         except Exception as e:
             print(f"❌ OpenMeteo error at {hour}: {e}", flush=True)
             om_result = {"cloud_cover": None}
 
         time_str = f"{hour:02d}:00 UTC"
-        return (time_str, owm_result.get("cloud_cover"), om_result.get("cloud_cover"))
+        owm_data[time_str] = format_cloud_cover(owm_result.get("cloud_cover"))
+        om_data[time_str] = format_cloud_cover(om_result.get("cloud_cover"))
 
-    # ✅ Run all fetches concurrently with asyncio.gather
-    results = await asyncio.gather(*(fetch_for_hour(hour) for hour in target_hours))
-
-    for time_str, owm_cc, om_cc in results:
-        owm_data[time_str] = format_cloud_cover(owm_cc)
-        om_data[time_str] = format_cloud_cover(om_cc)
-
+    # 📦 Build the output structure
     return {
         "location": location_name,
         "overview": {
             "date_for": date_for_dt.strftime("%d/%m/%Y"),
             "date_time_collected": local_dt.strftime("%d/%m/%Y %H:%M"),
-            "num_of_days_between_forecast": (date_for_dt.date() - datetime.now(timezone.utc).date()).days
+            "num_of_days_between_forecast": days_ahead
         },
         "cloud_cover": [
             {
@@ -64,22 +82,20 @@ async def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, a
         ],
     }
 
-async def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
+async def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None, shared_data=None):
     if provider == WeatherProvider.OPENWEATHERMAP:
         if not api_key:
             raise ValueError("OpenWeatherMap API key is required.")
-        data = await fetch_owm_3hour_forecast(lat, lon, api_key)
+        data = shared_data or await fetch_owm_3hour_forecast(lat, lon, api_key)
         print("📡 Sending request to OpenWeatherMap...", flush=True)
         return get_owm_3hour_cloud_cover_at_time(data, target_datetime_utc)
 
     elif provider == WeatherProvider.OPENMETEO:
         days_ahead = (target_datetime_utc.date() - datetime.now(timezone.utc).date()).days
-
-        # Round down to nearest hour
         target_hour_utc = target_datetime_utc.replace(minute=0, second=0, microsecond=0)
 
-        data = await rate_limited_openmeteo_call(fetch_openmeteo_hourly_cloud_data, lat, lon, days_ahead)
-        
+        data = shared_data or await rate_limited_openmeteo_call(fetch_openmeteo_hourly_cloud_data, lat, lon, days_ahead)
+
         if not data or "hourly" not in data:
             print("❌ OpenMeteo data is None or invalid — skipping", flush=True)
             return {
@@ -91,11 +107,8 @@ async def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None)
         print("🌤️ Request to OpenMeteo complete", flush=True)
         date_str = target_hour_utc.strftime('%Y-%m-%d')
         time_str = target_hour_utc.strftime('%H:%M')
-
         return get_openmeteo_cloud_cover_at_time(data, date_str, time_str)
 
-    else:
-        raise ValueError(f"Unknown provider: {provider}")
 
 def save_forecast_to_file(new_data, filename="data/cloud_cover.json"):
     # Load existing data if file exists
