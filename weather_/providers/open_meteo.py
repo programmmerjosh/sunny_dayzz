@@ -1,5 +1,6 @@
 import threading
 import time
+import json
 
 from datetime import datetime, timedelta, timezone
 from weather_.utils import safe_get
@@ -28,15 +29,22 @@ def get_openmeteo_cloud_cover_at_time(hourly_data, date_str, time_str):
 
 # 1 request per second (change this value as needed) ~ GitHub Actions is too fast for OpenMeteo's API rate allowance on their free-tier
 # So, we have to slow dow calls to this API (specifically if GitHub Actions is making these API calls for us)
-OPENMETEO_RATE_LIMIT_SECONDS = 1.0
-_last_om_request_time = 0
-_om_lock = threading.Lock()
-
 def rate_limited_openmeteo_call(func, *args, **kwargs):
     for attempt in range(1, 4):
         try:
             print(f"📡 Requesting from OpenMeteo (attempt {attempt})...", flush=True)
-            return func(*args, **kwargs)
+            result = func(*args, **kwargs)
+            
+            if result is None:
+                print("❌ Received None from OpenMeteo.", flush=True)
+            elif not isinstance(result, dict):
+                print(f"⚠️ Unexpected result type from OpenMeteo: {type(result)}", flush=True)
+            else:
+                print("✅ OpenMeteo returned a response. Sample:", flush=True)
+                print(json.dumps(result, indent=2)[:1000], flush=True)  # limit to avoid huge dump
+
+            return result
+
         except Exception as e:
             print(f"⚠️ OpenMeteo error: {e}", flush=True)
             if attempt < 3:

@@ -1,6 +1,5 @@
 import os
 import json
-import time
 
 from zoneinfo import ZoneInfo  # For Python 3.9+
 from timezonefinder import TimezoneFinder
@@ -66,7 +65,6 @@ def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key
             }
         ],
     }
-
 
 def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
     if provider == WeatherProvider.OPENWEATHERMAP:

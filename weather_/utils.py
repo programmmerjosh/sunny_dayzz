@@ -8,6 +8,11 @@ def safe_get(url, source_name, retries=3):
         try:
             print(f"📡 Requesting from {source_name} (attempt {attempt+1})...", flush=True)
             response = requests.get(url, timeout=10)
+            print(f"📄 {source_name}. URL: {response.url}", flush=True)
+
+            if source_name == "OpenMeteo":
+                print(f"\n\n👇👇👇👇👇 JSON response on attempt {attempt+1}: {response.json()}\n\n", flush=True)
+
             response.raise_for_status()
             return response.json()
         except RequestException as e:
