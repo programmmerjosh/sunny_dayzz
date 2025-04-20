@@ -10,7 +10,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from enums.weather_provider import WeatherProvider
 
 from weather_.providers.open_weather_map import fetch_owm_3hour_forecast, get_owm_3hour_cloud_cover_at_time
-from weather_.providers.open_meteo import fetch_openmeteo_hourly_cloud_data, get_openmeteo_cloud_cover_at_time
+from weather_.providers.open_meteo import fetch_openmeteo_hourly_cloud_data, get_openmeteo_cloud_cover_at_time, rate_limited_openmeteo_call
 
 # ========== weather.py helper functions ============
 def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key):
@@ -82,7 +82,7 @@ def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
         # Round down to nearest hour
         target_hour_utc = target_datetime_utc.replace(minute=0, second=0, microsecond=0)
 
-        data = fetch_openmeteo_hourly_cloud_data(lat, lon, days_ahead)
+        data = rate_limited_openmeteo_call(fetch_openmeteo_hourly_cloud_data, lat, lon, days_ahead)
         
         if not data or "hourly" not in data:
             print("❌ OpenMeteo data is None or invalid — skipping", flush=True)
