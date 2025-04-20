@@ -36,7 +36,6 @@ def main():
 
     print("🌍 Starting location loop...", flush=True)
 
-    # new
     def process_location(loc):
         lat, lon = get_lat_lon(loc, WEATHER_API_KEY)
         saved = 0
@@ -59,34 +58,8 @@ def main():
                 f"[{datetime.now(timezone.utc).strftime('%Y-%m-%d')}] Location: {loc}, Generated: {generated}, Saved: {saved}\n"
             )
 
-
     with ThreadPoolExecutor(max_workers=4) as executor:
         executor.map(process_location, LOCATIONS)
-
-
-    # old
-    # for loc in LOCATIONS:
-    #     print(f"📍 Processing location: {loc}", flush=True)
-    #     print(f"📍 Collecting forecast for {loc}...")
-    #     lat, lon = get_lat_lon(loc, WEATHER_API_KEY)
-
-    #     # Collect and save
-    #     saved = 0
-    #     generated = 0
-
-    #     for forecast_date in target_dates:
-    #         forecast_data = collect_cloud_cover_comparison(lat, lon, loc, forecast_date, WEATHER_API_KEY)
-    #         generated += 1
-
-    #         print("📝 Writing data to file...", flush=True)
-    #         if save_forecast_to_file(forecast_data):
-    #             saved += 1
-        
-
-
-
-
-        
     
 if __name__ == "__main__":
     main()
