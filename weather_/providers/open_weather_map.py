@@ -1,15 +1,17 @@
-import requests
+import httpx
 
 from datetime import datetime, timezone
 from weather_.utils import safe_get
+from weather_.metrics import increment_openweathermap_calls
 
-def get_lat_lon(city_name, api_key):
+async def get_lat_lon(city_name, api_key):
 
     if not api_key:
         raise Exception("API key not found. Did you set it in the .env file?")
     
     url = f"http://api.openweathermap.org/geo/1.0/direct?q={city_name}&appid={api_key}"
-    response = requests.get(url)
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url)
     data = response.json()
     
     if not data:
@@ -19,7 +21,7 @@ def get_lat_lon(city_name, api_key):
     lon = data[0]['lon']
     return lat, lon
     
-def fetch_owm_3hour_forecast(lat, lon, api_key):
+async def fetch_owm_3hour_forecast(lat, lon, api_key):
     """
     LIMITATIONS OF FREE TIER OPENWEATHERMAP API:
     Hourly forecast: unavailable
@@ -32,7 +34,8 @@ def fetch_owm_3hour_forecast(lat, lon, api_key):
         f"lat={lat}&lon={lon}&units=metric&appid={api_key}"
     )
 
-    return safe_get(source_name="OpenWeatherMap", url=url)
+    await increment_openweathermap_calls()
+    return await safe_get(source_name="OpenWeatherMap", url=url)
 
 def get_owm_3hour_cloud_cover_at_time(data, target_dt_utc):
     closest_entry = None

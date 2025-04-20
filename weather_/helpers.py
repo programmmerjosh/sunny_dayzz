@@ -1,10 +1,10 @@
 import os
+import asyncio
 import json
 
 from zoneinfo import ZoneInfo  # For Python 3.9+
 from timezonefinder import TimezoneFinder
 from datetime import datetime, timedelta, timezone
-from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from enums.weather_provider import WeatherProvider
 
@@ -12,24 +12,23 @@ from weather_.providers.open_weather_map import fetch_owm_3hour_forecast, get_ow
 from weather_.providers.open_meteo import fetch_openmeteo_hourly_cloud_data, get_openmeteo_cloud_cover_at_time, rate_limited_openmeteo_call
 
 # ========== weather.py helper functions ============
-def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key):
+async def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key):
     local_dt = get_local_datetime(datetime.now(timezone.utc), lat, lon)
-
     target_hours = [6, 9, 12, 15, 18]
     owm_data = {}
     om_data = {}
 
-    def fetch_for_hour(hour):
+    async def fetch_for_hour(hour):
         target_dt = date_for_dt.replace(hour=hour)
 
         try:
-            owm_result = get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENWEATHERMAP, api_key)
+            owm_result = await get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENWEATHERMAP, api_key)
         except Exception as e:
             print(f"❌ OWM error at {hour}: {e}", flush=True)
             owm_result = {"cloud_cover": None}
 
         try:
-            om_result = get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENMETEO)
+            om_result = await get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENMETEO)
         except Exception as e:
             print(f"❌ OpenMeteo error at {hour}: {e}", flush=True)
             om_result = {"cloud_cover": None}
@@ -37,13 +36,12 @@ def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key
         time_str = f"{hour:02d}:00 UTC"
         return (time_str, owm_result.get("cloud_cover"), om_result.get("cloud_cover"))
 
-    # 🧵 Thread pool for parallel hour-wise fetching
-    with ThreadPoolExecutor(max_workers=5) as executor:
-        futures = [executor.submit(fetch_for_hour, hour) for hour in target_hours]
-        for future in as_completed(futures):
-            time_str, owm_cc, om_cc = future.result()
-            owm_data[time_str] = format_cloud_cover(owm_cc)
-            om_data[time_str] = format_cloud_cover(om_cc)
+    # ✅ Run all fetches concurrently with asyncio.gather
+    results = await asyncio.gather(*(fetch_for_hour(hour) for hour in target_hours))
+
+    for time_str, owm_cc, om_cc in results:
+        owm_data[time_str] = format_cloud_cover(owm_cc)
+        om_data[time_str] = format_cloud_cover(om_cc)
 
     return {
         "location": location_name,
@@ -66,11 +64,11 @@ def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key
         ],
     }
 
-def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
+async def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
     if provider == WeatherProvider.OPENWEATHERMAP:
         if not api_key:
             raise ValueError("OpenWeatherMap API key is required.")
-        data = fetch_owm_3hour_forecast(lat, lon, api_key)
+        data = await fetch_owm_3hour_forecast(lat, lon, api_key)
         print("📡 Sending request to OpenWeatherMap...", flush=True)
         return get_owm_3hour_cloud_cover_at_time(data, target_datetime_utc)
 
@@ -80,7 +78,7 @@ def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
         # Round down to nearest hour
         target_hour_utc = target_datetime_utc.replace(minute=0, second=0, microsecond=0)
 
-        data = rate_limited_openmeteo_call(fetch_openmeteo_hourly_cloud_data, lat, lon, days_ahead)
+        data = await rate_limited_openmeteo_call(fetch_openmeteo_hourly_cloud_data, lat, lon, days_ahead)
         
         if not data or "hourly" not in data:
             print("❌ OpenMeteo data is None or invalid — skipping", flush=True)
