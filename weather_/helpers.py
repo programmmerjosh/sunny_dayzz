@@ -1,9 +1,11 @@
 import os
 import json
+import time
 
 from zoneinfo import ZoneInfo  # For Python 3.9+
 from timezonefinder import TimezoneFinder
 from datetime import datetime, timedelta, timezone
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from enums.weather_provider import WeatherProvider
 
@@ -12,34 +14,43 @@ from weather_.providers.open_meteo import fetch_openmeteo_hourly_cloud_data, get
 
 # ========== weather.py helper functions ============
 def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key):
+    local_dt = get_local_datetime(datetime.now(timezone.utc), lat, lon)
 
-    # today's date and current (local) time
-    local_dt = get_local_datetime(datetime.now(timezone.utc), lat, lon) # NOTE: for this variable, that we are storing in our json data as: date_time_collected, will be the local date (and time) of the location we are looking for. NOT necessarily the time we see wherever we are running the application from.
-
-    # Define forecast times
     target_hours = [6, 9, 12, 15, 18]
-
-    # Prepare the containers
     owm_data = {}
     om_data = {}
 
-    for hour in target_hours:
+    def fetch_for_hour(hour):
         target_dt = date_for_dt.replace(hour=hour)
 
-        owm_result = get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENWEATHERMAP, api_key)
-        om_result = get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENMETEO)
+        try:
+            owm_result = get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENWEATHERMAP, api_key)
+        except Exception as e:
+            print(f"❌ OWM error at {hour}: {e}", flush=True)
+            owm_result = {"cloud_cover": None}
+
+        try:
+            om_result = get_cloud_cover(lat, lon, target_dt, WeatherProvider.OPENMETEO)
+        except Exception as e:
+            print(f"❌ OpenMeteo error at {hour}: {e}", flush=True)
+            om_result = {"cloud_cover": None}
 
         time_str = f"{hour:02d}:00 UTC"
-        owm_data[time_str] = format_cloud_cover(owm_result.get('cloud_cover'))
-        om_data[time_str] = format_cloud_cover(om_result.get('cloud_cover'))
+        return (time_str, owm_result.get("cloud_cover"), om_result.get("cloud_cover"))
 
+    # 🧵 Thread pool for parallel hour-wise fetching
+    with ThreadPoolExecutor(max_workers=5) as executor:
+        futures = [executor.submit(fetch_for_hour, hour) for hour in target_hours]
+        for future in as_completed(futures):
+            time_str, owm_cc, om_cc = future.result()
+            owm_data[time_str] = format_cloud_cover(owm_cc)
+            om_data[time_str] = format_cloud_cover(om_cc)
 
-    # Build the JSON structure
-    output = {
+    return {
         "location": location_name,
         "overview": {
             "date_for": date_for_dt.strftime("%d/%m/%Y"),
-            "date_time_collected": local_dt.strftime("%d/%m/%Y %H:%M"), 
+            "date_time_collected": local_dt.strftime("%d/%m/%Y %H:%M"),
             "num_of_days_between_forecast": (date_for_dt.date() - datetime.now(timezone.utc).date()).days
         },
         "cloud_cover": [
@@ -56,7 +67,6 @@ def collect_cloud_cover_comparison(lat, lon, location_name, date_for_dt, api_key
         ],
     }
 
-    return output
 
 def get_cloud_cover(lat, lon, target_datetime_utc, provider, api_key=None):
     if provider == WeatherProvider.OPENWEATHERMAP:
