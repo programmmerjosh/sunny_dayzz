@@ -32,21 +32,18 @@ jobs:
           FREE_TIER_OPENWEATHERMAP_API_KEY: ${{ secrets.FREE_TIER_OPENWEATHERMAP_API_KEY }}
         run: python weather.py
 
-      - name: Commit weather data to 'daily-data-updates' branch
+      - name: Commit changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-
-          # Create new branch if it doesn't exist
-          git fetch origin daily-data-updates || true
-          git checkout -B daily-data-updates
-
-          # Stage only the data file and logs
-          git add data/cloud_cover.json
-          git add logs/weather_log.txt
-
+          git add .
           git diff --cached --quiet || git commit -m "🤖 Daily weather update [auto]"
 
-      - name: Force push to daily-data-updates branch
+      - name: Push to daily-data-updates branch (force update)
         run: |
+          # Create the branch if it doesn't exist locally
+          git checkout -B daily-data-updates
+          
+          # Push and overwrite remote branch
           git push --force origin HEAD:daily-data-updates
+
