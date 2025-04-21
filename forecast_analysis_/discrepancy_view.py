@@ -111,7 +111,7 @@ def render_discrepancy_checker(filtered_entries, selected_location):
             key = (row["Hour"], row["Source"], row["Days Before"])
             hour = row["Hour"]
             base_color = HOUR_COLORS.get(hour, "#ffcccc")
-            return [f"background-color: {base_color}" if key in highlights else "" for _ in row]
+            return [f"background-color: {base_color}; color: black" if key in highlights else "" for _ in row]
 
         styled = df.style.apply(highlight_func, axis=1)
         st.dataframe(styled, use_container_width=True)

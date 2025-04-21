@@ -1,6 +1,6 @@
 # ☀️ Sunny Dayzz
 
-Sunny Dayzz is a weather forecast accuracy app built with Streamlit, ChatGPT, and Python. It helps analyze, visualize, and validate weather prediction data collected over time — with a special focus on **forecast accuracy** and **sunny day identification**. 🌤️
+Sunny Dayzz is a weather forecast accuracy app built with Streamlit, ChatGPT, and Python. It helps analyze, visualize, and validate weather prediction data collected over time — with a special focus on **cloud cover**,  **forecast accuracy**, and **sunny day identification**. 🌤️
 
 ---
 
