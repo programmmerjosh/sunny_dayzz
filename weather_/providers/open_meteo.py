@@ -43,7 +43,7 @@ async def rate_limited_openmeteo_call(func, *args, **kwargs):
             return result
 
         except Exception as e:
-            print(f"⚠️ OpenMeteo error: {e}", flush=True)
+            print(f"⚠️ OpenMeteo threw an error on attempt #{attempt}. Result DOES exist, but exception caught.\nResult: {result}\nError: {e}", flush=True)
             if attempt < 3:
                 time.sleep(2)
             else:
