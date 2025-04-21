@@ -40,6 +40,8 @@ async def rate_limited_openmeteo_call(func, *args, **kwargs):
             elif not isinstance(result, dict):
                 print(f"⚠️ Unexpected result type from OpenMeteo: {type(result)}", flush=True)
 
+            if attempt > 1:
+                print(f"✅ OpenMeteo succeeded on attempt #{attempt}: {type(result)}", flush=True)
             return result
 
         except Exception as e:
