@@ -45,11 +45,8 @@ jobs:
           git add data/cloud_cover.json
           git add logs/weather_log.txt
 
-          # Commit only if there are changes
           git diff --cached --quiet || git commit -m "🤖 Daily weather update [auto]"
 
-          # Pull remote changes with rebase to avoid non-fast-forward errors
-          git pull --rebase origin daily-data-updates || echo "No remote branch to rebase yet."
-
-          # Push to remote, creating the branch if needed
-          git push origin HEAD:daily-data-updates
+      - name: Force push to daily-data-updates branch
+        run: |
+          git push --force origin HEAD:daily-data-updates
