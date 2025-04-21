@@ -48,5 +48,8 @@ jobs:
           # Commit only if there are changes
           git diff --cached --quiet || git commit -m "🤖 Daily weather update [auto]"
 
+          # Fetch and include remote changes
+          git pull --rebase origin daily-data-updates
+
           # Push the branch (create or update)
           git push origin daily-data-updates
