@@ -36,14 +36,19 @@ jobs:
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
+          
+          # Checkout the daily-data-updates branch (create if needed)
+          git fetch origin daily-data-updates || true
+          git checkout daily-data-updates || git checkout -b daily-data-updates
+          
+          # Pull latest commits to ensure local is up to date
+          git pull origin daily-data-updates || true
+      
+          # Stage and commit if there are changes
           git add .
           git diff --cached --quiet || git commit -m "🤖 Daily weather update [auto]"
-
-      - name: Push to daily-data-updates branch (force update)
+      
+      - name: Push changes
         run: |
-          # Create the branch if it doesn't exist locally
-          git checkout -B daily-data-updates
-          
-          # Push and overwrite remote branch
-          git push --force origin HEAD:daily-data-updates
+          git push origin daily-data-updates
 
