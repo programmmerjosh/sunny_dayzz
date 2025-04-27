@@ -32,18 +32,27 @@ jobs:
           FREE_TIER_OPENWEATHERMAP_API_KEY: ${{ secrets.FREE_TIER_OPENWEATHERMAP_API_KEY }}
         run: python weather.py
 
+      - name: Ensure daily-data-updates branch exists
+        run: |
+          git fetch origin
+          if git ls-remote --exit-code --heads origin daily-data-updates; then
+            echo "✅ Branch 'daily-data-updates' exists. Switching to it."
+            git switch daily-data-updates
+            git pull origin daily-data-updates
+          else
+            echo "🚀 Branch 'daily-data-updates' does not exist. Creating from master."
+            git switch master
+            git pull origin master
+            git switch -c daily-data-updates
+          fi
+      
       - name: Commit changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add .
           git diff --cached --quiet || git commit -m "🤖 Daily weather update [auto]"
-
-      - name: Push to daily-data-updates branch (force update)
+      
+      - name: Push changes
         run: |
-          # Create the branch if it doesn't exist locally
-          git checkout -B daily-data-updates
-          
-          # Push and overwrite remote branch
-          git push --force origin HEAD:daily-data-updates
-
+          git push origin daily-data-updates
