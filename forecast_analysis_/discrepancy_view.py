@@ -115,3 +115,5 @@ def render_discrepancy_checker(filtered_entries, selected_location):
 
         styled = df.style.apply(highlight_func, axis=1)
         st.dataframe(styled, use_container_width=True)
+
+        return threshold

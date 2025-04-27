@@ -10,16 +10,8 @@ st.markdown("""
 Here we analyze how predictions made **3 or 5 days in advance** compare to the actual weather recorded on those days.
 """)
 
-st.markdown("## 🧠 Forecast Source Accuracy Rankings")
-
 # Load the data
 all_data = load_forecast_data()
-accuracy_df = evaluate_source_accuracy(all_data)
-
-if accuracy_df.empty:
-    st.info("No forecast vs actual data available yet for comparison.")
-else:
-    st.dataframe(accuracy_df, use_container_width=True)
 
 # Sidebar location filter
 locations = sorted(set(entry["location"] for entry in all_data))
@@ -29,4 +21,14 @@ selected_location = st.sidebar.selectbox("Select a location", locations)
 filtered = [entry for entry in all_data if entry["location"] == selected_location]
 
 # Pass filtered entries and selected location
-render_discrepancy_checker(filtered, selected_location)
+threshold = render_discrepancy_checker(filtered, selected_location)
+
+filtered_data = [entry for entry in all_data if entry.get("location") == selected_location]
+
+st.markdown("## 🧠 Forecast Source Accuracy Rankings")
+accuracy_df = evaluate_source_accuracy(filtered_data, tolerance=threshold)
+
+if accuracy_df.empty:
+    st.info("No forecast vs actual data available yet for comparison.")
+else:
+    st.dataframe(accuracy_df, use_container_width=True)
