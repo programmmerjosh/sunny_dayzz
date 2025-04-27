@@ -1,5 +1,5 @@
 import pandas as pd
-# ============ dashboard.py helper functions ==============
+# ============ 1_Cloud_Cover.py helper functions ==============
 def flatten_cloud_cover(entry):
     """Extracts rows for each source from cloud cover list."""
     date = pd.to_datetime(entry["overview"]["date_for"], format="%d/%m/%Y")
