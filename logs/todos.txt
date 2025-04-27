@@ -1,7 +1,4 @@
-    # ======== small and easy ============
-    # TODO: forecast accuracy calculation should not stay on 10% threshold. It should adjust based on discrepancy theshold slider value AND location (NOT all entries for all locations)
-
-    # ======== not difficult but not essential right now ============
+# ======== not difficult but not essential right now ============
     # TODO: add more weather data sources
     # TODO: create reusable function to count number of sources and print how many times an API for each source is called
     # TODO: think about ways to use the cloud cover summary ~ perhaps a table where we show a counter for each category for mornings, afternoons and nights
