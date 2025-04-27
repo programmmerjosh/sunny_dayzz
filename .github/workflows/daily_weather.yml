@@ -26,33 +26,29 @@ jobs:
         run: |
           pip install -r requirements.txt
 
+      - name: Checkout daily-data-updates branch
+        run: |
+          git fetch origin
+          if git show-ref --quiet refs/remotes/origin/daily-data-updates; then
+            echo "✅ Branch 'daily-data-updates' exists. Checking out."
+            git checkout daily-data-updates
+            git pull origin daily-data-updates
+          else
+            echo "⚡ Branch 'daily-data-updates' does not exist. Creating it."
+            git checkout -b daily-data-updates
+          fi
+      
       - name: Run weather script
         env:
           GPT_API_KEY: ${{ secrets.GPT_API_KEY }}
           FREE_TIER_OPENWEATHERMAP_API_KEY: ${{ secrets.FREE_TIER_OPENWEATHERMAP_API_KEY }}
-        run: python weather.py
-
-      - name: Ensure daily-data-updates branch exists
         run: |
-          git fetch origin
-          if git ls-remote --exit-code --heads origin daily-data-updates; then
-            echo "✅ Branch 'daily-data-updates' exists. Switching to it."
-            git switch daily-data-updates
-            git pull origin daily-data-updates
-          else
-            echo "🚀 Branch 'daily-data-updates' does not exist. Creating from master."
-            git switch master
-            git pull origin master
-            git switch -c daily-data-updates
-          fi
+          python weather.py
       
-      - name: Commit changes
+      - name: Commit and push changes
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
           git add .
-          git diff --cached --quiet || git commit -m "🤖 Daily weather update [auto]"
-      
-      - name: Push changes
-        run: |
+          git commit -m "🤖 Daily weather update [auto]" || echo "Nothing to commit"
           git push origin daily-data-updates
