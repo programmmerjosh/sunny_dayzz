@@ -1,5 +1,6 @@
 # ======== not difficult but not essential right now ============
     # TODO: add more weather data sources
+    # TODO: cloud cover date range is not working as expected. Either we make it select one day to display one day OR the range should actually show ALL days within that range.
     # TODO: create reusable function to count number of sources and print how many times an API for each source is called
     # TODO: think about ways to use the cloud cover summary ~ perhaps a table where we show a counter for each category for mornings, afternoons and nights
 
