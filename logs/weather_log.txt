@@ -312,3 +312,228 @@
 [2025-05-03] Location: Logroño, Generated: 3, Saved: 3
 [2025-05-03] Location: Port Elizabeth, Generated: 3, Saved: 3
 [2025-05-03] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-04] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-04] Location: London, Generated: 3, Saved: 3
+[2025-05-04] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-04] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-04] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-04] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-04] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-04] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-04] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-05] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-05] Location: London, Generated: 3, Saved: 3
+[2025-05-05] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-05] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-05] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-05] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-05] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-05] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-05] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-06] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-06] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-06] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-06] Location: London, Generated: 3, Saved: 3
+[2025-05-06] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-06] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-06] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-06] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-06] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-07] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-07] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-07] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-07] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-07] Location: London, Generated: 3, Saved: 3
+[2025-05-07] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-07] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-07] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-07] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-08] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-08] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-08] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-08] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-08] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-08] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-08] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-08] Location: London, Generated: 3, Saved: 3
+[2025-05-08] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-09] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-09] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-09] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-09] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-09] Location: London, Generated: 3, Saved: 3
+[2025-05-09] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-09] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-09] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-09] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-10] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-10] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-10] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-10] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-10] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-10] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-10] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-10] Location: London, Generated: 3, Saved: 3
+[2025-05-10] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-11] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-11] Location: London, Generated: 3, Saved: 3
+[2025-05-11] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-11] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-11] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-11] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-11] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-11] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-11] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-12] Location: London, Generated: 3, Saved: 3
+[2025-05-12] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-12] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-12] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-12] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-12] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-12] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-12] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-12] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-13] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-13] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-13] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-13] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-13] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-13] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-13] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-13] Location: London, Generated: 3, Saved: 3
+[2025-05-13] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-14] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-14] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-14] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-14] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-14] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-14] Location: London, Generated: 3, Saved: 3
+[2025-05-14] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-14] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-14] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-15] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-15] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-15] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-15] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-15] Location: London, Generated: 3, Saved: 3
+[2025-05-15] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-15] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-15] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-15] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-16] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-16] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-16] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-16] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-16] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-16] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-16] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-16] Location: London, Generated: 3, Saved: 3
+[2025-05-16] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-17] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-17] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-17] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-17] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-17] Location: London, Generated: 3, Saved: 3
+[2025-05-17] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-17] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-17] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-17] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-18] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-18] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-18] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-18] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-18] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-18] Location: London, Generated: 3, Saved: 3
+[2025-05-18] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-18] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-18] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-19] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-19] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-19] Location: London, Generated: 3, Saved: 3
+[2025-05-19] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-19] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-19] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-19] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-19] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-19] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-20] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-20] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-20] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-20] Location: London, Generated: 3, Saved: 3
+[2025-05-20] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-20] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-20] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-20] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-20] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-21] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-21] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-21] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-21] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-21] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-21] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-21] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-21] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-21] Location: London, Generated: 3, Saved: 3
+[2025-05-22] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-22] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-22] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-22] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-22] Location: London, Generated: 3, Saved: 3
+[2025-05-22] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-22] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-22] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-22] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-23] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-23] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-23] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-23] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-23] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-23] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-23] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-23] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-23] Location: London, Generated: 3, Saved: 3
+[2025-05-24] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-24] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-24] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-24] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-24] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-24] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-24] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-24] Location: London, Generated: 3, Saved: 3
+[2025-05-24] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-25] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-25] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-25] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-25] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-25] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-25] Location: London, Generated: 3, Saved: 3
+[2025-05-25] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-25] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-25] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-26] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-26] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-26] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-26] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-26] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-26] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-26] Location: London, Generated: 3, Saved: 3
+[2025-05-26] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-26] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-27] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-27] Location: London, Generated: 3, Saved: 3
+[2025-05-27] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-27] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-27] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-27] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-27] Location: Madrid, Generated: 3, Saved: 3
+[2025-05-27] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-27] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-28] Location: Bristol, Generated: 3, Saved: 3
+[2025-05-28] Location: London, Generated: 3, Saved: 3
+[2025-05-28] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-05-28] Location: Amalfi, Generated: 3, Saved: 3
+[2025-05-28] Location: Barcelona, Generated: 3, Saved: 3
+[2025-05-28] Location: Logroño, Generated: 3, Saved: 3
+[2025-05-28] Location: Cannes, Generated: 3, Saved: 3
+[2025-05-28] Location: Mamaia, Generated: 3, Saved: 3
+[2025-05-28] Location: Madrid, Generated: 3, Saved: 3
