@@ -1284,3 +1284,12 @@
 [2025-08-20] Location: Cannes, Generated: 3, Saved: 3
 [2025-08-20] Location: Barcelona, Generated: 3, Saved: 3
 [2025-08-20] Location: Madrid, Generated: 3, Saved: 3
+[2025-08-21] Location: Bristol, Generated: 3, Saved: 3
+[2025-08-21] Location: Cannes, Generated: 3, Saved: 3
+[2025-08-21] Location: Logroño, Generated: 3, Saved: 3
+[2025-08-21] Location: Port Elizabeth, Generated: 3, Saved: 3
+[2025-08-21] Location: Amalfi, Generated: 3, Saved: 3
+[2025-08-21] Location: Madrid, Generated: 3, Saved: 3
+[2025-08-21] Location: Barcelona, Generated: 3, Saved: 3
+[2025-08-21] Location: London, Generated: 3, Saved: 3
+[2025-08-21] Location: Mamaia, Generated: 3, Saved: 3
