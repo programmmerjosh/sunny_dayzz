@@ -38,7 +38,11 @@ for entry in actuals_only:
 # dataframe timeline
 df_timeline = pd.DataFrame(timeline_data)
 df_timeline["Date"] = pd.to_datetime(df_timeline["Date"])
-df_timeline["Cloud Cover (%)"] = df_timeline["Cloud Cover (%)"].astype(int)
+df_timeline["Cloud Cover (%)"] = (
+    pd.to_numeric(df_timeline["Cloud Cover (%)"], errors="coerce")
+    .round()
+    .astype("Int64")   # nullable integer dtype, supports <NA>
+)
 df_timeline["Tooltip Label"] = df_timeline["Cloud Cover (%)"].apply(lambda x: f"{x}%" if x is not None else "—")
 
 # display the number of date entries we have in our dataset
