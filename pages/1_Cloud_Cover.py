@@ -7,6 +7,29 @@ from cloud_cover_.data_loader import load_data, get_filtered_data
 from cloud_cover_.charts import build_pie_chart, build_time_chart
 
 st.set_page_config(page_title="☁️ Cloud Cover", page_icon="🌞")
+
+# put near the top, after set_page_config
+st.markdown("""
+<style>
+/* Make Altair chart blocks scroll vertically within a fixed viewport height */
+div[data-testid="stVegaLiteChart"] {
+  max-height: 78vh;
+  min-width: 50vw;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+/* Let inner vega container size naturally; wrapper handles scrolling */
+div[data-testid="stVegaLiteChart"] > div {
+  height: auto !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 st.title("☁️ Cloud Cover")
 st.text("NOTE: Our charts only show 0-day (on-the-day) forecasts and not future predictions")
 
@@ -48,11 +71,10 @@ df_timeline["Tooltip Label"] = df_timeline["Cloud Cover (%)"].apply(lambda x: f"
 # display the number of date entries we have in our dataset
 st.write("📅 Unique Dates in Timeline:", df_timeline["Date"].nunique())
 
-# chart 1 title
-st.markdown("## ☁️ Cloud Cover by Source")
 
-# display chart 1
+st.subheader("☁️ Cloud Cover by Source")
 st.altair_chart(build_time_chart(df_timeline, facet_by_date=True), use_container_width=True)
+
 
 # Unique options from your dataframe
 available_dates = sorted(set(e["overview"]["date_for"] for e in actuals_only))
