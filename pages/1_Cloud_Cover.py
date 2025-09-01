@@ -1,6 +1,8 @@
 import streamlit as st
 import os
 import pandas as pd
+from datetime import datetime
+
 
 from cloud_cover_.helpers import is_sunny_day, flatten_cloud_cover, get_sunny_blocks, get_combined_block_averages
 from cloud_cover_.data_loader import load_data, get_filtered_data
@@ -77,7 +79,10 @@ st.altair_chart(build_time_chart(df_timeline, facet_by_date=True), use_container
 
 
 # Unique options from your dataframe
-available_dates = sorted(set(e["overview"]["date_for"] for e in actuals_only))
+available_dates = sorted(
+    {e["overview"]["date_for"] for e in actuals_only},
+    key=lambda d: datetime.strptime(d, "%d/%m/%Y")
+)
 available_sources = sorted(df_timeline["Source"].unique())
 
 # Sidebar filters
