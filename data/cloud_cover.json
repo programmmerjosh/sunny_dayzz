@@ -254398,5 +254398,1085 @@
         }
       }
     ]
+  },
+  {
+    "location": "London",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 06:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Cannes",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Logro\u00f1o",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "83%",
+          "09:00 UTC": "83%",
+          "12:00 UTC": "92%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "83%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Mostly Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Port Elizabeth",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 08:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "14%",
+          "09:00 UTC": "14%",
+          "12:00 UTC": "10%",
+          "15:00 UTC": "71%",
+          "18:00 UTC": "85%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Partly cloudy",
+          "evening": "Mostly Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "86%",
+          "09:00 UTC": "74%",
+          "12:00 UTC": "5%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Cloudy",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Amalfi",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Mamaia",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 08:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "73%",
+          "09:00 UTC": "73%",
+          "12:00 UTC": "53%",
+          "15:00 UTC": "16%",
+          "18:00 UTC": "18%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Partly cloudy",
+          "evening": "Mostly sunny. Partly cloudy"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "96%",
+          "09:00 UTC": "68%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Madrid",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "83%",
+          "09:00 UTC": "83%",
+          "12:00 UTC": "92%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "99%",
+          "09:00 UTC": "95%",
+          "12:00 UTC": "95%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "83%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Mostly Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Barcelona",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "21%",
+          "09:00 UTC": "21%",
+          "12:00 UTC": "40%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Mostly Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "82%",
+          "09:00 UTC": "87%",
+          "12:00 UTC": "79%",
+          "15:00 UTC": "71%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Mostly Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Bristol",
+    "overview": {
+      "date_for": "16/12/2025",
+      "date_time_collected": "16/12/2025 06:31",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "92%",
+          "18:00 UTC": "96%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "68%",
+          "12:00 UTC": "97%",
+          "15:00 UTC": "73%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Mostly Overcast",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Cannes",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "98%",
+          "12:00 UTC": "98%",
+          "15:00 UTC": "99%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Port Elizabeth",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 08:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "82%",
+          "09:00 UTC": "92%",
+          "12:00 UTC": "80%",
+          "15:00 UTC": "71%",
+          "18:00 UTC": "72%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Mostly Overcast",
+          "evening": "Mostly Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Logro\u00f1o",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "92%",
+          "09:00 UTC": "92%",
+          "12:00 UTC": "92%",
+          "15:00 UTC": "92%",
+          "18:00 UTC": "92%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "84%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "93%",
+          "15:00 UTC": "93%",
+          "18:00 UTC": "98%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Mamaia",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 08:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "41%",
+          "09:00 UTC": "41%",
+          "12:00 UTC": "41%",
+          "15:00 UTC": "41%",
+          "18:00 UTC": "41%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Cloudy",
+          "evening": "Cloudy"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "94%",
+          "09:00 UTC": "94%",
+          "12:00 UTC": "94%",
+          "15:00 UTC": "96%",
+          "18:00 UTC": "97%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Amalfi",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "98%",
+          "09:00 UTC": "98%",
+          "12:00 UTC": "98%",
+          "15:00 UTC": "98%",
+          "18:00 UTC": "98%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "51%",
+          "09:00 UTC": "55%",
+          "12:00 UTC": "19%",
+          "15:00 UTC": "6%",
+          "18:00 UTC": "27%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Mostly sunny. Partly cloudy",
+          "evening": "Mostly sunny. Partly cloudy"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Barcelona",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "46%",
+          "09:00 UTC": "46%",
+          "12:00 UTC": "46%",
+          "15:00 UTC": "46%",
+          "18:00 UTC": "46%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Cloudy",
+          "evening": "Cloudy"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "66%",
+          "09:00 UTC": "17%",
+          "12:00 UTC": "2%",
+          "15:00 UTC": "67%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Partly cloudy",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Bristol",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 06:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Cannes",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "99%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "99%",
+          "18:00 UTC": "87%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Bristol",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 06:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "20%",
+          "09:00 UTC": "8%",
+          "12:00 UTC": "7%",
+          "15:00 UTC": "12%",
+          "18:00 UTC": "9%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "28%",
+          "09:00 UTC": "20%",
+          "12:00 UTC": "20%",
+          "15:00 UTC": "19%",
+          "18:00 UTC": "3%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Mostly sunny. Partly cloudy",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Madrid",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "95%",
+          "12:00 UTC": "98%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Logro\u00f1o",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Barcelona",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "15%",
+          "09:00 UTC": "9%",
+          "12:00 UTC": "36%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Mostly Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "70%",
+          "09:00 UTC": "86%",
+          "12:00 UTC": "91%",
+          "15:00 UTC": "88%",
+          "18:00 UTC": "95%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Mamaia",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 08:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "89%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "50%",
+          "09:00 UTC": "27%",
+          "12:00 UTC": "40%",
+          "15:00 UTC": "61%",
+          "18:00 UTC": "82%"
+        },
+        "summary": {
+          "morning": "Partly cloudy",
+          "afternoon": "Cloudy",
+          "evening": "Mostly Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Amalfi",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "87%",
+          "12:00 UTC": "95%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "33%",
+          "12:00 UTC": "2%",
+          "15:00 UTC": "44%",
+          "18:00 UTC": "31%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Mostly sunny. Partly cloudy",
+          "evening": "Partly cloudy"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Port Elizabeth",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 08:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Madrid",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 07:31",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "London",
+    "overview": {
+      "date_for": "21/12/2025",
+      "date_time_collected": "16/12/2025 06:31",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "93%",
+          "09:00 UTC": "93%",
+          "12:00 UTC": "93%",
+          "15:00 UTC": "93%",
+          "18:00 UTC": "93%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "66%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Fully Overcast",
+          "evening": "Mostly Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "London",
+    "overview": {
+      "date_for": "19/12/2025",
+      "date_time_collected": "16/12/2025 06:32",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "58%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "17%",
+          "15:00 UTC": "24%",
+          "18:00 UTC": "22%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Mostly sunny. Partly cloudy",
+          "evening": "Mostly sunny. Partly cloudy"
+        }
+      }
+    ]
   }
 ]
