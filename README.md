@@ -114,10 +114,15 @@ streamlit run Dashboard.py
 
 ---
 
+## 🌍 Now available 
+
+- 🌐 [Live App](https://sunnydayzz.streamlit.app/) Hosted version on Streamlit Cloud
+
+---
+
 ## 📌 Coming Soon
 
-- 🌐 Hosted version on Streamlit Cloud
-- ☁️ Firebase migration (optional)
+- ☁️ Firebase migration
 
 ---
 

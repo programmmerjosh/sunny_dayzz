@@ -1,5 +1,43 @@
 import pandas as pd
-# ============ dashboard.py helper functions ==============
+import re
+from typing import Optional, Any, Dict, List
+
+def _parse_percent(val):
+    """
+    Coerce a variety of inputs to an integer percent (0–100).
+    Returns None when it's unparseable.
+    Handles: 42, 42.5, "42", "42%", "42.5%", " ~42 % ", "—", "N/A", None.
+    """
+    if val is None:
+        return None
+    if isinstance(val, (int, float)):
+        num = int(round(val))
+        return max(0, min(100, num))
+
+    s = str(val).strip()
+    if not s:
+        return None
+
+    if s.endswith('%'):
+        s = s[:-1].strip()
+
+    try:
+        num = int(float(s.replace(',', '.')))
+        return max(0, min(100, num))
+    except ValueError:
+        pass
+
+    m = re.search(r'-?\d+(?:\.\d+)?', s)
+    if m:
+        try:
+            num = int(float(m.group()))
+            return max(0, min(100, num))
+        except ValueError:
+            return None
+
+    return None
+
+
 def flatten_cloud_cover(entry):
     """Extracts rows for each source from cloud cover list."""
     date = pd.to_datetime(entry["overview"]["date_for"], format="%d/%m/%Y")
@@ -9,10 +47,12 @@ def flatten_cloud_cover(entry):
         source = source_block["source"]
         cover = source_block["data"]
         for time_utc, percent in cover.items():
+            parsed = _parse_percent(percent)
+            # If you prefer to drop bad values completely, use `if parsed is None: continue`
             rows.append({
                 "Date": date,
                 "Time": time_utc,
-                "Cloud Cover (%)": int(percent.strip('%')),
+                "Cloud Cover (%)": parsed,
                 "Source": source,
                 "Location": entry["location"]
             })
@@ -28,8 +68,9 @@ def average_cloud_cover_by_block(source_data):
     block_averages = {}
     for block, times in blocks.items():
         values = [
-            int(source_data[time].strip('%'))
-            for time in times if time in source_data
+            v for time in times if time in source_data
+            for v in [_parse_percent(source_data[time])]
+            if v is not None
         ]
         block_averages[block] = sum(values) / len(values) if values else None
     return block_averages
