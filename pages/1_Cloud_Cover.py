@@ -1,12 +1,37 @@
 import streamlit as st
 import os
 import pandas as pd
+from datetime import datetime
+
 
 from cloud_cover_.helpers import is_sunny_day, flatten_cloud_cover, get_sunny_blocks, get_combined_block_averages
 from cloud_cover_.data_loader import load_data, get_filtered_data
 from cloud_cover_.charts import build_pie_chart, build_time_chart
 
 st.set_page_config(page_title="☁️ Cloud Cover", page_icon="🌞")
+
+# put near the top, after set_page_config
+st.markdown("""
+<style>
+/* Make Altair chart blocks scroll vertically within a fixed viewport height */
+div[data-testid="stVegaLiteChart"] {
+  max-height: 78vh;
+  min-width: 50vw;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  padding: 8px;
+}
+
+/* Let inner vega container size naturally; wrapper handles scrolling */
+div[data-testid="stVegaLiteChart"] > div {
+  height: auto !important;
+}
+</style>
+""", unsafe_allow_html=True)
+
+
 st.title("☁️ Cloud Cover")
 st.text("NOTE: Our charts only show 0-day (on-the-day) forecasts and not future predictions")
 
@@ -38,20 +63,26 @@ for entry in actuals_only:
 # dataframe timeline
 df_timeline = pd.DataFrame(timeline_data)
 df_timeline["Date"] = pd.to_datetime(df_timeline["Date"])
-df_timeline["Cloud Cover (%)"] = df_timeline["Cloud Cover (%)"].astype(int)
+df_timeline["Cloud Cover (%)"] = (
+    pd.to_numeric(df_timeline["Cloud Cover (%)"], errors="coerce")
+    .round()
+    .astype("Int64")   # nullable integer dtype, supports <NA>
+)
 df_timeline["Tooltip Label"] = df_timeline["Cloud Cover (%)"].apply(lambda x: f"{x}%" if x is not None else "—")
 
 # display the number of date entries we have in our dataset
 st.write("📅 Unique Dates in Timeline:", df_timeline["Date"].nunique())
 
-# chart 1 title
-st.markdown("## ☁️ Cloud Cover by Source")
 
-# display chart 1
+st.subheader("☁️ Cloud Cover by Source")
 st.altair_chart(build_time_chart(df_timeline, facet_by_date=True), use_container_width=True)
 
+
 # Unique options from your dataframe
-available_dates = sorted(set(e["overview"]["date_for"] for e in actuals_only))
+available_dates = sorted(
+    {e["overview"]["date_for"] for e in actuals_only},
+    key=lambda d: datetime.strptime(d, "%d/%m/%Y")
+)
 available_sources = sorted(df_timeline["Source"].unique())
 
 # Sidebar filters
