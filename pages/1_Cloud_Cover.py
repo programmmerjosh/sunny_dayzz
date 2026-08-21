@@ -1,167 +1,138 @@
-import streamlit as st
-import os
+from pathlib import Path
+
+import altair as alt
 import pandas as pd
-from datetime import datetime
+import streamlit as st
+
+from cloud_cover_.data_loader import get_filtered_data, load_data
+from cloud_cover_.helpers import flatten_cloud_cover
+from ui import apply_theme, empty_state
 
 
-from cloud_cover_.helpers import is_sunny_day, flatten_cloud_cover, get_sunny_blocks, get_combined_block_averages
-from cloud_cover_.data_loader import load_data, get_filtered_data
-from cloud_cover_.charts import build_pie_chart, build_time_chart
+st.set_page_config(page_title="Same-day outlook", page_icon="☀️", layout="wide")
+apply_theme()
 
-st.set_page_config(page_title="☁️ Cloud Cover", page_icon="🌞")
-
-# put near the top, after set_page_config
-st.markdown("""
-<style>
-/* Make Altair chart blocks scroll vertically within a fixed viewport height */
-div[data-testid="stVegaLiteChart"] {
-  max-height: 78vh;
-  min-width: 50vw;
-  overflow-y: auto;
-  overscroll-behavior: contain;
-  border: 1px solid #e6e6e6;
-  border-radius: 10px;
-  padding: 8px;
-}
-
-/* Let inner vega container size naturally; wrapper handles scrolling */
-div[data-testid="stVegaLiteChart"] > div {
-  height: auto !important;
-}
-</style>
-""", unsafe_allow_html=True)
-
-
-st.title("☁️ Cloud Cover")
-st.text("NOTE: Our charts only show 0-day (on-the-day) forecasts and not future predictions")
-
-DATA_PATH = os.path.join("data", "cloud_cover.json")
-data = load_data(DATA_PATH)
-
+data_path = Path(__file__).parents[1] / "data" / "cloud_cover.json"
+data = load_data(data_path)
 if not data:
-    st.error("No weather data found.")
-    st.stop()
+    empty_state("No weather data has been collected yet.")
 
-locations = sorted(set(entry["location"] for entry in data))
-selected_location = st.sidebar.selectbox("Select a location", locations)
-filtered = get_filtered_data(data, selected_location)
+locations = sorted({entry.get("location") for entry in data if entry.get("location")})
+with st.sidebar:
+    selected_location = st.selectbox("Location", locations)
+    window = st.selectbox("History", [30, 90, "All"], format_func=lambda value: f"Last {value} days" if isinstance(value, int) else value)
+    sunny_threshold = st.slider("Sunny below (% cloud)", 10, 70, 35)
 
-actuals_only = [
-    e for e in filtered
-    if e["overview"]["num_of_days_between_forecast"] == 0
+entries = [
+    entry
+    for entry in get_filtered_data(data, selected_location)
+    if entry.get("overview", {}).get("num_of_days_between_forecast") == 0
 ]
+frame = pd.DataFrame([row for entry in entries for row in flatten_cloud_cover(entry)]).dropna(subset=["Cloud Cover (%)"])
+if frame.empty:
+    empty_state()
 
-if not actuals_only:
-    st.warning("⚠️ No 0-day (actual) forecast data available yet for this location.")
-    st.stop()
+sources = sorted(frame["Source"].unique())
+with st.sidebar:
+    selected_sources = st.multiselect("Providers", sources, default=sources)
+if not selected_sources:
+    empty_state("Select at least one provider.")
 
-# ========== 📈 Timeline Charts ============# 
-timeline_data = []
-for entry in actuals_only:
-    timeline_data.extend(flatten_cloud_cover(entry))
+frame = frame[frame["Source"].isin(selected_sources)].copy()
+if isinstance(window, int):
+    cutoff = frame["Date"].max() - pd.Timedelta(days=window - 1)
+    frame = frame[frame["Date"] >= cutoff]
 
-# dataframe timeline
-df_timeline = pd.DataFrame(timeline_data)
-df_timeline["Date"] = pd.to_datetime(df_timeline["Date"])
-df_timeline["Cloud Cover (%)"] = (
-    pd.to_numeric(df_timeline["Cloud Cover (%)"], errors="coerce")
-    .round()
-    .astype("Int64")   # nullable integer dtype, supports <NA>
+frame["Hour"] = frame["Time"].str.slice(0, 2).astype(int)
+frame["Period"] = pd.cut(frame["Hour"], bins=[0, 10, 16, 24], labels=["Morning", "Afternoon", "Evening"])
+daily = frame.groupby(["Date", "Source"], as_index=False)["Cloud Cover (%)"].mean()
+day_average = frame.groupby("Date", as_index=False)["Cloud Cover (%)"].mean()
+day_average["Sunny"] = day_average["Cloud Cover (%)"] <= sunny_threshold
+provider_pivot = frame.pivot_table(index=["Date", "Time"], columns="Source", values="Cloud Cover (%)")
+gaps = provider_pivot.max(axis=1) - provider_pivot.min(axis=1)
+periods = frame.groupby(["Date", "Period"], observed=True, as_index=False)["Cloud Cover (%)"].mean()
+periods["Sunny"] = periods["Cloud Cover (%)"] <= sunny_threshold
+sunny_by_period = periods.groupby("Period", observed=True, as_index=False)["Sunny"].mean()
+sunny_by_period["Sunny share (%)"] = sunny_by_period["Sunny"] * 100
+clearest = sunny_by_period.sort_values("Sunny share (%)", ascending=False).iloc[0]
+
+st.title(f"☀️ Same-day outlook · {selected_location}")
+st.caption("What the providers expected between 06:00 and 18:00 UTC on each day.")
+
+col1, col2, col3, col4 = st.columns(4)
+col1.metric("Sunny days", f"{day_average['Sunny'].mean() * 100:.0f}%")
+col2.metric("Average cloud", f"{frame['Cloud Cover (%)'].mean():.0f}%")
+col3.metric("Clearest period", str(clearest["Period"]))
+col4.metric("Provider gap", f"{gaps.mean():.0f} pts")
+
+st.subheader("Cloud cover at a glance")
+heatmap_data = frame.groupby(["Date", "Time"], as_index=False)["Cloud Cover (%)"].mean()
+heatmap = (
+    alt.Chart(heatmap_data)
+    .mark_rect(cornerRadius=2)
+    .encode(
+        x=alt.X("yearmonthdate(Date):O", title=None, axis=alt.Axis(labelAngle=-45, format="%d %b")),
+        y=alt.Y("Time:O", sort=["06:00 UTC", "09:00 UTC", "12:00 UTC", "15:00 UTC", "18:00 UTC"], title=None),
+        color=alt.Color("Cloud Cover (%):Q", scale=alt.Scale(domain=[0, 100], range=["#F7CF62", "#B8C7D9", "#40536B"]), title="Cloud %"),
+        tooltip=[alt.Tooltip("Date:T", format="%d %b %Y"), "Time", alt.Tooltip("Cloud Cover (%):Q", format=".0f")],
+    )
+    .properties(height=230)
 )
-df_timeline["Tooltip Label"] = df_timeline["Cloud Cover (%)"].apply(lambda x: f"{x}%" if x is not None else "—")
+st.altair_chart(heatmap, use_container_width=True)
 
-# display the number of date entries we have in our dataset
-st.write("📅 Unique Dates in Timeline:", df_timeline["Date"].nunique())
+left, right = st.columns([2, 1])
+with left:
+    st.subheader("Daily outlook by provider")
+    trend = (
+        alt.Chart(daily)
+        .mark_line(point=False, strokeWidth=2)
+        .encode(
+            x=alt.X(
+                "Date:T",
+                title=None,
+                axis=alt.Axis(
+                    format="%d %b",
+                    labelAngle=0,
+                    labelFlush=False,
+                    labelOverlap="greedy",
+                    labelPadding=10,
+                    tickCount="week",
+                ),
+            ),
+            y=alt.Y("Cloud Cover (%):Q", scale=alt.Scale(domain=[0, 100]), title="Daily cloud (%)"),
+            color=alt.Color("Source:N", title=None),
+            tooltip=[alt.Tooltip("Date:T", format="%d %b %Y"), "Source", alt.Tooltip("Cloud Cover (%):Q", format=".0f")],
+        )
+        .properties(height=300, padding={"bottom": 32})
+    )
+    st.altair_chart(trend, use_container_width=True)
+with right:
+    st.subheader("Sunny by period")
+    period_chart = (
+        alt.Chart(sunny_by_period)
+        .mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5, color="#F4B942")
+        .encode(
+            x=alt.X("Period:N", title=None, sort=["Morning", "Afternoon", "Evening"]),
+            y=alt.Y("Sunny share (%):Q", scale=alt.Scale(domain=[0, 100]), title="Days below threshold (%)"),
+            tooltip=["Period", alt.Tooltip("Sunny share (%):Q", format=".0f")],
+        )
+        .properties(height=300)
+    )
+    st.altair_chart(period_chart, use_container_width=True)
 
-
-st.subheader("☁️ Cloud Cover by Source")
-st.altair_chart(build_time_chart(df_timeline, facet_by_date=True), use_container_width=True)
-
-
-# Unique options from your dataframe
-available_dates = sorted(
-    {e["overview"]["date_for"] for e in actuals_only},
-    key=lambda d: datetime.strptime(d, "%d/%m/%Y")
+latest_date = frame["Date"].max()
+latest = frame[frame["Date"] == latest_date]
+st.subheader(f"Latest day · {latest_date.strftime('%d %b %Y')}")
+latest_chart = (
+    alt.Chart(latest)
+    .mark_line(point=alt.OverlayMarkDef(size=70), strokeWidth=3)
+    .encode(
+        x=alt.X("Time:O", title="UTC"),
+        y=alt.Y("Cloud Cover (%):Q", scale=alt.Scale(domain=[0, 100]), title="Cloud cover (%)"),
+        color=alt.Color("Source:N", title=None),
+        tooltip=["Time", "Source", "Cloud Cover (%)"],
+    )
+    .properties(height=280)
 )
-available_sources = sorted(df_timeline["Source"].unique())
-
-# Sidebar filters
-selected_date = st.sidebar.selectbox("Select a date to filter cloud cover trends", available_dates)
-selected_sources = st.sidebar.multiselect(
-    "Select weather data sources to filter", available_sources, default=available_sources
-)
-
-filtered_df = df_timeline[
-    (df_timeline["Date"].dt.strftime("%d/%m/%Y") == selected_date) &
-    (df_timeline["Source"].isin(selected_sources))
-].copy()
-
-# chart 2 title
-st.markdown("## ☁️ Cloud Cover Trend (Filtered)")
-
-# display chart 2
-st.altair_chart(build_time_chart(filtered_df), use_container_width=True)
-
-# set threshold for sunny day/time-block
-sunny_threshold = st.sidebar.slider(
-    "Define cloudy threshold (%)", 20, 65, 35,
-)
-st.sidebar.caption(
-    "☀️ This slider lets you define what percentage of cloud cover for any particular day/time-period you still clasify as 'sunny'.\n"
-    "A lower threshold means you're more strict (e.g., setting it to 20% means that 21% cloud cover for any day would count as a cloudy day),\n"
-    "while a higher threshold allows for more clouds in your 'sunny' days/mornings/afternoons/evenings."
-)
-
-selected_block = st.sidebar.radio(
-    "Select time block to view (for block pie chart)",
-    ["morning", "afternoon", "evening"],
-)
-
-# get sunny days pie chart
-zero_day = [
-    e for e in filtered
-    if e["overview"]["num_of_days_between_forecast"] == 0
-]
-
-sunny_days = []
-cloudy_days = []
-
-for entry in zero_day:
-    block_averages = get_combined_block_averages(entry, selected_sources)
-
-    if is_sunny_day(block_averages, sunny_threshold):
-        sunny_days.append(entry)
-    else:
-        cloudy_days.append(entry)
-
-st.markdown("## ☀️ Sunny vs Cloudy Days")
-
-st.metric("Total Days", len(zero_day))
-st.metric("☀️ Sunny Days", len(sunny_days))
-st.metric("🌥️ Cloudy Days", len(cloudy_days))
-
-st.altair_chart(build_pie_chart(sunny_days, cloudy_days, use_len=True), use_container_width=True)
-
-# get sunny time-block pie chart
-sunny_blocks = 0
-cloudy_blocks = 0
-
-for entry in zero_day:
-    block_averages = get_combined_block_averages(entry, selected_sources)
-    block_status = get_sunny_blocks(block_averages, sunny_threshold)
-
-    # This is where you use it:
-    is_block_sunny = block_status.get(selected_block)
-
-    if is_block_sunny is True:
-        sunny_blocks += 1
-    elif is_block_sunny is False:
-        cloudy_blocks += 1
-
-
-st.markdown(f"## 🌤️ Sunny vs Cloudy ({selected_block.capitalize()}s Only)")
-
-st.metric("☀️ Sunny Blocks", sunny_blocks)
-st.metric("🌥️ Cloudy Blocks", cloudy_blocks)
-
-st.altair_chart(build_pie_chart(sunny_blocks, cloudy_blocks), use_container_width=True)
+threshold_line = alt.Chart(pd.DataFrame({"threshold": [sunny_threshold]})).mark_rule(color="#F4B942", strokeDash=[6, 4]).encode(y="threshold:Q")
+st.altair_chart(latest_chart + threshold_line, use_container_width=True)

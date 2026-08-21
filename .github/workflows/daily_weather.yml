@@ -8,47 +8,66 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: daily-weather-collector
+  cancel-in-progress: false
+
 jobs:
   run-weather-script:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
-      - uses: actions/checkout@v3
+      - name: Check out repository
+        uses: actions/checkout@v4
         with:
-          fetch-depth: 0  # 👈 Required for branching
+          fetch-depth: 0
+
+      - name: Check out data branch
+        run: |
+          set +e
+          git ls-remote --exit-code --heads origin daily-data-updates
+          branch_status=$?
+          set -e
+
+          if [ "$branch_status" -eq 0 ]; then
+            git fetch origin daily-data-updates
+            git switch --track --force-create daily-data-updates origin/daily-data-updates
+          elif [ "$branch_status" -eq 2 ]; then
+            git switch --create daily-data-updates
+          else
+            echo "Unable to check the remote data branch."
+            exit "$branch_status"
+          fi
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
-          python-version: '3.10'
+          python-version: "3.10"
+          cache: pip
 
       - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
+        run: python -m pip install --requirement requirements.txt
 
-      - name: Checkout daily-data-updates branch
-        run: |
-          git fetch origin
-          if git show-ref --quiet refs/remotes/origin/daily-data-updates; then
-            echo "✅ Branch 'daily-data-updates' exists. Checking out."
-            git checkout daily-data-updates
-            git pull origin daily-data-updates
-          else
-            echo "⚡ Branch 'daily-data-updates' does not exist. Creating it."
-            git checkout -b daily-data-updates
-          fi
-      
-      - name: Run weather script
+      - name: Verify dependency environment
+        run: python -m pip check
+
+      - name: Collect forecasts
         env:
-          GPT_API_KEY: ${{ secrets.GPT_API_KEY }}
           FREE_TIER_OPENWEATHERMAP_API_KEY: ${{ secrets.FREE_TIER_OPENWEATHERMAP_API_KEY }}
+        run: python weather.py
+
+      - name: Validate collected JSON
+        run: python -m json.tool data/cloud_cover.json > /dev/null
+
+      - name: Commit updated data
         run: |
-          python weather.py
-      
-      - name: Commit and push changes
-        run: |
-          git config user.name "GitHub Actions"
-          git config user.email "actions@github.com"
-          git add .
-          git commit -m "🤖 Daily weather update [auto]" || echo "Nothing to commit"
-          git push origin daily-data-updates
+          if git diff --quiet -- data/cloud_cover.json logs/weather_log.txt; then
+            echo "No new forecast records to commit."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/cloud_cover.json logs/weather_log.txt
+          git commit -m "data: collect daily weather forecasts"
+          git push --set-upstream origin daily-data-updates
