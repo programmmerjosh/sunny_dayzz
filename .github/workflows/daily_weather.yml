@@ -40,6 +40,15 @@ jobs:
             exit "$branch_status"
           fi
 
+          # Keep the collected data from this branch, but run the
+          # latest collector code from the workflow-triggering commit.
+          git restore --source="$GITHUB_SHA" -- \
+            weather.py \
+            weather_ \
+            enums \
+            requirements.txt \
+            data/locations.json
+
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
