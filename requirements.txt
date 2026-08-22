@@ -1,5 +1,6 @@
 streamlit
 requests
+httpx>=0.27,<1
 timezonefinder
 python-dotenv
 seaborn
