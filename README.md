@@ -24,6 +24,17 @@ The Cloud Cover page explores same-day forecasts for one location over a selecte
 
 Displayed clear-sky and cloud-cover values are rounded as complementary pairs so they always total exactly 100%.
 
+### Forecast Analysis page
+
+The Forecast Analysis page shows how much each provider's earlier forecast changed by the target date. Users can choose a location, a 30-day, 90-day, 180-day, or complete history window, and the percentage-point difference that counts as close.
+
+- **Forecast drift:** shows the typical absolute change between each 3- or 5-day forecast and the same-day forecast. Lower values mean the earlier forecast remained steadier.
+- **Close calls:** shows the approximate percentage of individual comparisons that fell within the selected tolerance.
+- **Comparisons:** one comparison covers a single provider, target date, forecast time, and lead time (3 or 5 days) against its corresponding same-day forecast. One date can therefore contribute multiple comparisons.
+- **Provider summaries:** compare typical drift and the share of close calls for each provider at both lead times.
+- **Drift over time:** uses a 14-day moving average to make longer-term changes easier to see.
+- **Date inspection:** uses a calendar picker to compare same-day, 3-day, and 5-day forecasts by provider and time of day for one selected date. Dates outside the available range cannot be selected, and dates without a complete comparison show a clear message.
+
 The dataset does **not** contain weather-station observations. The 0-day value is a same-day forecast reference, so the app describes forecast patterns, drift, and provider agreement—not measured weather or forecast accuracy.
 
 ## Run locally
