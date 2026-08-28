@@ -4,11 +4,16 @@ Sunny Dayzz visualises cloud-cover forecasts from OpenWeatherMap and Open-Meteo 
 
 ## What the app shows
 
-- **Same-day outlook:** when and where providers expected sunnier conditions.
+- **Seasonal dashboard:** typical clear-sky and cloud-cover outlooks calculated from all available same-day forecasts. Spring, Summer, Autumn, and Winter are matched to each location's hemisphere, so Port Elizabeth uses Southern Hemisphere seasons.
+- **Latest available outlook:** a clearly dated, secondary view of the most recent same-day forecast in the merged dataset.
+- **Data freshness and sample size:** the dashboard states how current the merged data is and how many forecast dates support each seasonal comparison.
+- **Same-day history:** when and where providers expected sunnier conditions.
 - **Provider agreement:** how far the two forecasts differ.
 - **Forecast drift:** how much each provider's 3- and 5-day outlook changed by the same day.
 
-The dataset does **not** contain weather-station observations. The 0-day value is a same-day forecast reference, so the app describes forecast *drift* and *agreement*, not measured forecast accuracy.
+For the seasonal dashboard, provider and daytime readings are averaged into one value per location and date first. Those daily values are then averaged for the selected local season, ensuring that every date contributes equally. Clear sky is calculated as `100% - cloud cover`.
+
+The dataset does **not** contain weather-station observations. The 0-day value is a same-day forecast reference, so the app describes forecast patterns, drift, and provider agreement—not measured weather or forecast accuracy.
 
 ## Run locally
 
@@ -45,6 +50,17 @@ python weather.py
 
 Collection writes the JSON atomically, uses UTC consistently, retries transient HTTP failures, and avoids duplicate records.
 
+Collected records are stored on the `daily-data-updates` branch. Until that branch is merged, the deployed dashboard may not include the newest collection. The dashboard therefore displays both the latest available data date and how many days it is behind the current date.
+
 ## Data shape
 
 Each location/date has up to three snapshots (`0`, `3`, and `5` days before) from both providers at 06:00, 09:00, 12:00, 15:00, and 18:00 UTC. Data is stored in `data/cloud_cover.json`.
+
+Meteorological seasons are grouped as follows:
+
+| Northern Hemisphere | Months | Southern Hemisphere |
+| --- | --- | --- |
+| Winter | December–February | Summer |
+| Spring | March–May | Autumn |
+| Summer | June–August | Winter |
+| Autumn | September–November | Spring |
