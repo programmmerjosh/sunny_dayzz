@@ -13,6 +13,17 @@ Sunny Dayzz visualises cloud-cover forecasts from OpenWeatherMap and Open-Meteo 
 
 For the seasonal dashboard, provider and daytime readings are averaged into one value per location and date first. Those daily values are then averaged for the selected local season, ensuring that every date contributes equally. Clear sky is calculated as `100% - cloud cover`.
 
+### Cloud Cover page
+
+The Cloud Cover page explores same-day forecasts for one location over a selected 30-day, 90-day, or complete history window. Users can choose the providers and set the maximum cloud-cover percentage that counts as a mostly clear day.
+
+- **Clear sky by time of day:** a grey-to-gold grid groups forecasts into Morning (06:00 and 09:00 UTC), Afternoon (12:00 and 15:00 UTC), and Evening (18:00 UTC). More gold consistently means more expected clear sky, while a gold outline identifies periods that meet the selected sunny-day limit.
+- **Plain-language summary:** shows the share of mostly clear days, typical clear sky, clearest time of day, and typical difference between providers.
+- **Provider outlooks:** places the daily provider history beside the latest available day's provider comparison.
+- **Time-of-day frequency:** shows both the count and percentage of selected dates when each period was mostly clear, making the active history window explicit.
+
+Displayed clear-sky and cloud-cover values are rounded as complementary pairs so they always total exactly 100%.
+
 The dataset does **not** contain weather-station observations. The 0-day value is a same-day forecast reference, so the app describes forecast patterns, drift, and provider agreement—not measured weather or forecast accuracy.
 
 ## Run locally
