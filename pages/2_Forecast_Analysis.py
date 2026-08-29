@@ -7,7 +7,6 @@ import streamlit as st
 from forecast_analysis_.helpers import build_comparison_dataframe, load_forecast_data
 from ui import apply_theme, empty_state
 
-
 st.set_page_config(page_title="Forecast drift", page_icon="📈", layout="wide")
 apply_theme()
 
@@ -44,6 +43,15 @@ col2.metric("5-day drift", f"{mae_5:.1f} pts")
 col3.metric("Close calls", f"{frame['Within tolerance'].mean() * 100:.0f}%")
 col4.metric("Comparisons", f"{len(frame):,}")
 
+with st.container(border=True):
+    st.markdown("**How these figures are counted**")
+    st.markdown(
+        f"- **Close calls:** Percentage of individual comparisons where the earlier forecast stayed within "
+        f"{tolerance} percentage points of the same-day forecast.\n"
+        "- **Comparison:** One provider, target date and forecast time, comparing either its 3- or 5-day "
+        "forecast with its same-day forecast. A single date can contribute multiple comparisons."
+    )
+
 summary = (
     frame.groupby(["Source", "Lead time"], as_index=False)
     .agg(
@@ -58,6 +66,7 @@ summary["Close calls (%)"] *= 100
 left, right = st.columns([1.25, 1])
 with left:
     st.subheader("Drift by provider")
+    st.caption("By how much did forecasts typically change?")
     ranking = (
         alt.Chart(summary)
         .mark_bar(cornerRadiusEnd=5)
@@ -73,6 +82,7 @@ with left:
     st.altair_chart(ranking, use_container_width=True)
 with right:
     st.subheader("Within tolerance")
+    st.caption("How often was that change small enough to count as close?")
     agreement = (
         alt.Chart(summary)
         .mark_bar(cornerRadiusTopLeft=5, cornerRadiusTopRight=5)
@@ -104,9 +114,39 @@ trend = (
 )
 st.altair_chart(trend, use_container_width=True)
 
-available_dates = sorted(frame["Date"].dt.date.unique(), reverse=True)
-selected_date = st.selectbox("Inspect a date", available_dates, format_func=lambda date: date.strftime("%d %b %Y"))
+
+available_dates = sorted(frame["Date"].dt.date.unique())
+available_date_set = set(available_dates)
+calendar_scope = f"{selected_location}|{history}"
+
+if st.session_state.get("forecast_calendar_scope") != calendar_scope:
+    st.session_state["forecast_calendar_scope"] = calendar_scope
+    st.session_state["forecast_date_picker"] = available_dates[-1]
+
+if st.session_state.get("forecast_date_picker") not in available_date_set:
+    st.session_state["forecast_date_picker"] = available_dates[-1]
+
+st.subheader("Inspect a date")
+st.caption("Choose a date with complete comparison data.")
+
+selected_date = st.date_input(
+    "Date",
+    min_value=available_dates[0],
+    max_value=available_dates[-1],
+    key="forecast_date_picker",
+    format="DD/MM/YYYY",
+    label_visibility="collapsed",
+)
+
+if selected_date not in available_date_set:
+    st.warning(
+        "There is no complete comparison data for this date. "
+        "Please choose another date."
+    )
+    st.stop()
+    
 selected = frame[frame["Date"].dt.date == selected_date].copy()
+    
 long = pd.concat(
     [
         selected[["Hour", "Source", "Same-day cloud (%)"]].drop_duplicates().rename(columns={"Same-day cloud (%)": "Cloud cover (%)"}).assign(Outlook="Same day"),
