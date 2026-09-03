@@ -525478,5 +525478,1085 @@
         }
       }
     ]
+  },
+  {
+    "location": "London",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 11:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "55%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "79%",
+          "18:00 UTC": "78%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Mostly Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "40%",
+          "09:00 UTC": "5%",
+          "12:00 UTC": "74%",
+          "15:00 UTC": "54%",
+          "18:00 UTC": "81%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Mostly Overcast",
+          "evening": "Mostly Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Amalfi",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 12:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Port Elizabeth",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 12:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "60%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "London",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 11:40",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Bristol",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 11:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "87%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "83%",
+          "15:00 UTC": "95%",
+          "18:00 UTC": "98%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Barcelona",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 12:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "99%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "98%",
+          "15:00 UTC": "34%",
+          "18:00 UTC": "17%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Mostly Overcast",
+          "evening": "Mostly sunny. Partly cloudy"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Mamaia",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 13:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "33%",
+          "09:00 UTC": "80%",
+          "12:00 UTC": "88%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "35%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Cloudy",
+          "evening": "Partly cloudy"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Cannes",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 12:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "4%",
+          "12:00 UTC": "2%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "2%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Logroño",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 12:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "68%",
+          "09:00 UTC": "89%",
+          "12:00 UTC": "80%",
+          "15:00 UTC": "59%",
+          "18:00 UTC": "69%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Mostly Overcast",
+          "evening": "Mostly Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Madrid",
+    "overview": {
+      "date_for": "06/09/2026",
+      "date_time_collected": "03/09/2026 12:40",
+      "num_of_days_between_forecast": 3
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "44%",
+          "09:00 UTC": "2%",
+          "12:00 UTC": "13%",
+          "15:00 UTC": "29%",
+          "18:00 UTC": "66%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Mostly sunny. Partly cloudy",
+          "evening": "Mostly Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "London",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 11:41",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "29%",
+          "09:00 UTC": "5%",
+          "12:00 UTC": "17%",
+          "15:00 UTC": "78%",
+          "18:00 UTC": "54%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Cloudy",
+          "evening": "Cloudy"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Logroño",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 12:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Cannes",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 12:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "21%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Sunny & Clear",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Barcelona",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 12:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "23%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Mostly sunny. Partly cloudy"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Mamaia",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 13:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "25%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Mostly Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Amalfi",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 12:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "1%",
+          "09:00 UTC": "1%",
+          "12:00 UTC": "1%",
+          "15:00 UTC": "2%",
+          "18:00 UTC": "6%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Bristol",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 11:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "91%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Port Elizabeth",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 12:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "100%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Fully Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Cannes",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 12:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "64%",
+          "09:00 UTC": "2%",
+          "12:00 UTC": "2%",
+          "15:00 UTC": "2%",
+          "18:00 UTC": "2%"
+        },
+        "summary": {
+          "morning": "Partly cloudy",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "3%",
+          "15:00 UTC": "13%",
+          "18:00 UTC": "11%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Mostly sunny. Partly cloudy"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Amalfi",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 12:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "3%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "5%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Bristol",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 11:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "100%",
+          "09:00 UTC": "66%",
+          "12:00 UTC": "66%",
+          "15:00 UTC": "66%",
+          "18:00 UTC": "66%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Mostly Overcast",
+          "evening": "Mostly Overcast"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "28%",
+          "09:00 UTC": "12%",
+          "12:00 UTC": "68%",
+          "15:00 UTC": "39%",
+          "18:00 UTC": "45%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Cloudy",
+          "evening": "Cloudy"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Logroño",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 12:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "23%",
+          "09:00 UTC": "60%",
+          "12:00 UTC": "60%",
+          "15:00 UTC": "60%",
+          "18:00 UTC": "60%"
+        },
+        "summary": {
+          "morning": "Cloudy",
+          "afternoon": "Cloudy",
+          "evening": "Cloudy"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "8%",
+          "09:00 UTC": "47%",
+          "12:00 UTC": "53%",
+          "15:00 UTC": "15%",
+          "18:00 UTC": "43%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Partly cloudy",
+          "evening": "Cloudy"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Madrid",
+    "overview": {
+      "date_for": "03/09/2026",
+      "date_time_collected": "03/09/2026 12:41",
+      "num_of_days_between_forecast": 0
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": null,
+          "09:00 UTC": null,
+          "12:00 UTC": null,
+          "15:00 UTC": null,
+          "18:00 UTC": null
+        },
+        "summary": {
+          "morning": "Unavailable",
+          "afternoon": "Unavailable",
+          "evening": "Unavailable"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Madrid",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 12:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "32%",
+          "09:00 UTC": "90%",
+          "12:00 UTC": "98%",
+          "15:00 UTC": "97%",
+          "18:00 UTC": "85%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Mostly Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Mamaia",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 13:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "1%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "18%",
+          "15:00 UTC": "2%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Barcelona",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 12:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "32%",
+          "12:00 UTC": "32%",
+          "15:00 UTC": "32%",
+          "18:00 UTC": "32%"
+        },
+        "summary": {
+          "morning": "Mostly sunny. Partly cloudy",
+          "afternoon": "Partly cloudy",
+          "evening": "Partly cloudy"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "77%",
+          "09:00 UTC": "89%",
+          "12:00 UTC": "100%",
+          "15:00 UTC": "100%",
+          "18:00 UTC": "100%"
+        },
+        "summary": {
+          "morning": "Mostly Overcast",
+          "afternoon": "Fully Overcast",
+          "evening": "Fully Overcast"
+        }
+      }
+    ]
+  },
+  {
+    "location": "Port Elizabeth",
+    "overview": {
+      "date_for": "08/09/2026",
+      "date_time_collected": "03/09/2026 12:42",
+      "num_of_days_between_forecast": 5
+    },
+    "cloud_cover": [
+      {
+        "source": "OpenWeatherMap.com",
+        "data": {
+          "06:00 UTC": "2%",
+          "09:00 UTC": "2%",
+          "12:00 UTC": "2%",
+          "15:00 UTC": "2%",
+          "18:00 UTC": "2%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      },
+      {
+        "source": "OpenMeteo.com",
+        "data": {
+          "06:00 UTC": "0%",
+          "09:00 UTC": "0%",
+          "12:00 UTC": "0%",
+          "15:00 UTC": "0%",
+          "18:00 UTC": "0%"
+        },
+        "summary": {
+          "morning": "Sunny & Clear",
+          "afternoon": "Sunny & Clear",
+          "evening": "Sunny & Clear"
+        }
+      }
+    ]
   }
 ]
